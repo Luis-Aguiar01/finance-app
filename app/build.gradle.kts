@@ -39,10 +39,15 @@ android {
     viewBinding {
         enable = true
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     val version = "2.6.1"
     implementation("androidx.room:room-runtime:$version")
     implementation("androidx.room:room-ktx:$version")
