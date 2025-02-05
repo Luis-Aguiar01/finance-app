@@ -6,4 +6,6 @@
     <color name="background_app">#2A3439</color>
     <color name="card_background_color">#010B13</color>
     <color name="green">#3FFF00</color>
+    <color name="button_color">#0070BB</color>
+    <color name="text_hint">#C0C0C0</color>
 </resources>

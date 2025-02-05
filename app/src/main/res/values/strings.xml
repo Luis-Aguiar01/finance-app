@@ -10,4 +10,9 @@
     <string name="title_profile_navbar">Profile</string>
     <string name="pefil_title_card">Perfil</string>
     <string name="confing_card_title">Configurações</string>
+    <string name="title_register_form">Registro</string>
+    <string name="hint_input_name">Digite seu nome</string>
+    <string name="hint_input_email">Digite o seu email</string>
+    <string name="hint_input_password">Digite sua senha</string>
+    <string name="text_button_register">Cadastrar</string>
 </resources>
