@@ -3,13 +3,13 @@
     <string name="welcome_message_home">Bem-vindo,\nCristiano! \uD83D\uDC4B</string>
     <string name="current_balance">R$ 1.250,00</string>
     <string name="buy_card_text">Adicionar Compra</string>
-    <string name="check_expenses_card_title">Consultar Gastos</string>
-    <string name="financial_goals_card_title">Metas Financeiras</string>
-    <string name="fixed_bills_card_title">Contas Fixas</string>
+    <string name="check_expenses_card_title">Gráficos</string>
+    <string name="financial_goals_card_title">Metas</string>
+    <string name="fixed_bills_card_title">Contas</string>
     <string name="title_home_navbar">Home</string>
     <string name="title_profile_navbar">Profile</string>
     <string name="pefil_title_card">Perfil</string>
-    <string name="confing_card_title">Configurações</string>
+    <string name="confing_card_title">Histórico</string>
     <string name="title_register_form">Registro</string>
     <string name="hint_input_name">Digite seu nome</string>
     <string name="hint_input_email">Digite o seu email</string>
