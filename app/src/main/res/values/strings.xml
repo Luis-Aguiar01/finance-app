@@ -15,4 +15,6 @@
     <string name="hint_input_email">Digite o seu email</string>
     <string name="hint_input_password">Digite sua senha</string>
     <string name="text_button_register">Cadastrar</string>
+    <string name="login_button_text">Login</string>
+    <string name="login_title">Login</string>
 </resources>
