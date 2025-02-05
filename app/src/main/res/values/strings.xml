@@ -8,4 +8,6 @@
     <string name="fixed_bills_card_title">Contas Fixas</string>
     <string name="title_home_navbar">Home</string>
     <string name="title_profile_navbar">Profile</string>
+    <string name="pefil_title_card">Perfil</string>
+    <string name="confing_card_title">Configurações</string>
 </resources>

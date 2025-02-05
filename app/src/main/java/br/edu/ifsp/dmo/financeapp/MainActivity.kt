@@ -33,6 +33,14 @@ class MainActivity : AppCompatActivity() {
         binding.fixedBillsCard.setOnClickListener() {
             Toast.makeText(this, "Fixed Bills Card", Toast.LENGTH_SHORT).show()
         }
+
+        binding.configCard.setOnClickListener {
+            Toast.makeText(this, "Config Card", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.profileCard.setOnClickListener {
+            Toast.makeText(this, "Profile Card", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
