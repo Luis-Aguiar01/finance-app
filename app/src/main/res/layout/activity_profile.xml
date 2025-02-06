@@ -77,9 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            app:boxStrokeColor="@color/white"
             android:textColor="@color/white"
-            android:background="@null"
             android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -12,6 +12,7 @@ class AddPurchaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddPurchaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        configListeners()
     }
 
     private fun configListeners() {
