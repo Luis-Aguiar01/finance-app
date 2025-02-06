@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Finance App</string>
+    <string name="app_name">Finance Up</string>
     <string name="welcome_message_home">Bem-vindo,\nCristiano! \uD83D\uDC4B</string>
     <string name="current_balance">R$ 1.250,00</string>
     <string name="buy_card_text">Adicionar Compra</string>
@@ -37,4 +37,7 @@
     <string name="salary_hint">Salário</string>
     <string name="salary_placeholder">Digite o novo salário</string>
     <string name="edit_button_text">Editar</string>
+    <string name="copyright_message">2025© Todos os direitos reservados</string>
+    <string name="register_button">Cadastre-se</string>
+    <string name="initial_page_title">Cadastre-se ou realize o login</string>
 </resources>
