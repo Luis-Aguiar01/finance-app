@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:elevation="4dp"
         android:padding="20dp"
-        app:cardBackgroundColor="@color/blue"
+        app:cardBackgroundColor="@color/green"
         app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toTopOf="@id/grid_layout"
         app:layout_constraintEnd_toEndOf="parent"
