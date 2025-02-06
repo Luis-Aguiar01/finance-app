@@ -43,4 +43,7 @@
     <string name="historical_title">Histórico</string>
     <string name="historical_page_subtitle">Compras realizadas</string>
     <string name="logout">Logout</string>
+    <string name="name_input">Nome</string>
+    <string name="salary_input_hint">Salário</string>
+    <string name="salary_input_placeholder">Digite o seu salário</string>
 </resources>
