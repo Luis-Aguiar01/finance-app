@@ -1,4 +1,4 @@
-package br.edu.ifsp.dmo.financeapp
+package br.edu.ifsp.dmo.financeapp.ui.activities.chart
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
+import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityChartBinding
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry

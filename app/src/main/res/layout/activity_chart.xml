@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_app"
     android:padding="20dp"
-    tools:context=".ChartActivity">
+    tools:context=".ui.activities.chart.ChartActivity">
 
     <ImageView
         android:id="@+id/arrow_back"

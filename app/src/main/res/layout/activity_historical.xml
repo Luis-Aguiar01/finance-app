@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_app"
     android:padding="20dp"
-    tools:context=".HistoricalActivity">
+    tools:context=".ui.activities.historical.HistoricalActivity">
 
     <ImageView
         android:layout_width="60dp"

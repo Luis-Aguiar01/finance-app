@@ -13,10 +13,10 @@
         android:theme="@style/Theme.FinanceApp"
         tools:targetApi="31">
         <activity
-            android:name=".HistoricalActivity"
+            android:name=".ui.activities.historical.HistoricalActivity"
             android:exported="false" />
         <activity
-            android:name=".InitialActivity"
+            android:name=".ui.activities.initial.InitialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,30 +25,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.activities.profile.ProfileActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".FixedBillsActivity"
+            android:name=".ui.activities.bills.FixedBillsActivity"
             android:exported="false" />
         <activity
-            android:name=".GoalsActivity"
+            android:name=".ui.activities.goals.GoalsActivity"
             android:exported="false" />
         <activity
-            android:name=".ChartActivity"
+            android:name=".ui.activities.chart.ChartActivity"
             android:exported="true" />
         <activity
-            android:name=".AddPurchaseActivity"
+            android:name=".ui.activities.purchase.AddPurchaseActivity"
             android:exported="true"
             android:theme="@style/Theme.FinanceApp" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.activities.login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.activities.register.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.main.MainActivity"
             android:exported="true" />
     </application>
 

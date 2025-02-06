@@ -1,7 +1,6 @@
-package br.edu.ifsp.dmo.financeapp
+package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
 import android.os.Bundle
-import android.text.Layout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityMainBinding
