@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
-        android:text="Histórico"
+        android:text="@string/historical_title"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Compras realizadas"
+        android:text="@string/historical_page_subtitle"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -79,6 +79,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

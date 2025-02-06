@@ -40,4 +40,6 @@
     <string name="copyright_message">2025© Todos os direitos reservados</string>
     <string name="register_button">Cadastre-se</string>
     <string name="initial_page_title">Cadastre-se ou realize o login</string>
+    <string name="historical_title">Histórico</string>
+    <string name="historical_page_subtitle">Compras realizadas</string>
 </resources>

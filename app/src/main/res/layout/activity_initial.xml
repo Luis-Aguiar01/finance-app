@@ -39,10 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         android:text="@string/initial_page_title"
         android:textColor="@color/white"
-        android:textSize="27sp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
@@ -53,6 +55,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_color"
         android:paddingHorizontal="50dp"
+        android:layout_marginTop="20dp"
         android:paddingVertical="15dp"
         android:text="@string/login_button_text"
         android:textColor="@color/white"
@@ -88,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/copyright_message"
-        android:textColor="@color/white"
+        android:textColor="@color/gray"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,6 +110,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
