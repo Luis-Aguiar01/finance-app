@@ -67,4 +67,5 @@
     <string name="bar_chart">Barra</string>
     <string name="pie_chart">Pizza</string>
     <string name="line_chart">Linha</string>
+    <string name="goal_page_title">Metas</string>
 </resources>
