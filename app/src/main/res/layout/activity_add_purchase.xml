@@ -10,6 +10,7 @@
     tools:context=".ui.activities.purchase.AddPurchaseActivity">
 
     <ImageView
+        android:id="@+id/arrow_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/ic_arrow_back"

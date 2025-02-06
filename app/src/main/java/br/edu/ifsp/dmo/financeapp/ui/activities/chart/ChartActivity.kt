@@ -37,6 +37,13 @@ class ChartActivity : AppCompatActivity() {
         setBarChart()
         setPieChart()
         setLineChart()
+        configListeners()
+    }
+
+    private fun configListeners() {
+        binding.arrowBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setPickupDate() {

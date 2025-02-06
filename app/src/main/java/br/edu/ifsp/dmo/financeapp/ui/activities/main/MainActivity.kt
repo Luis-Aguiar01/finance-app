@@ -2,9 +2,7 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import br.edu.ifsp.dmo.financeapp.databinding.ActivityAddPurchaseBinding
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityMainBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.bills.FixedBillsActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.chart.ChartActivity
