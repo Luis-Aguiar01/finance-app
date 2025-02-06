@@ -1,9 +1,17 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.dmo.financeapp.databinding.ActivityAddPurchaseBinding
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityMainBinding
+import br.edu.ifsp.dmo.financeapp.ui.activities.bills.FixedBillsActivity
+import br.edu.ifsp.dmo.financeapp.ui.activities.chart.ChartActivity
+import br.edu.ifsp.dmo.financeapp.ui.activities.goals.GoalsActivity
+import br.edu.ifsp.dmo.financeapp.ui.activities.historical.HistoricalActivity
+import br.edu.ifsp.dmo.financeapp.ui.activities.profile.ProfileActivity
+import br.edu.ifsp.dmo.financeapp.ui.activities.purchase.AddPurchaseActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,28 +26,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun setCardClick() {
         binding.buyCard.setOnClickListener {
-            Toast.makeText(this, "Buy Card", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, AddPurchaseActivity::class.java))
         }
 
         binding.checkExpensesCard.setOnClickListener {
-            Toast.makeText(this, "Check Expenses", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ChartActivity::class.java))
         }
 
         binding.financialGoalsCard.setOnClickListener {
-            Toast.makeText(this, "Financial Goals Card", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, GoalsActivity::class.java))
         }
 
         binding.fixedBillsCard.setOnClickListener() {
-            Toast.makeText(this, "Fixed Bills Card", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, FixedBillsActivity::class.java))
         }
 
-        binding.configCard.setOnClickListener {
-            Toast.makeText(this, "Config Card", Toast.LENGTH_SHORT).show()
+        binding.historicalCard.setOnClickListener {
+            startActivity(Intent(this, HistoricalActivity::class.java))
         }
 
         binding.profileCard.setOnClickListener {
-            Toast.makeText(this, "Profile Card", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.logout.setOnClickListener {
+            finish()
         }
     }
-
 }

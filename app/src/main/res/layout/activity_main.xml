@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
@@ -65,7 +64,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/buy_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -102,7 +101,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/check_expenses_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -139,7 +138,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/financial_goals_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -176,7 +175,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/fixed_bills_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -213,7 +212,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/profile_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -248,9 +247,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/config_card"
+            android:id="@+id/historical_card"
             android:layout_width="160dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_margin="8dp"
             android:clickable="true"
             app:strokeWidth="0dp"
@@ -284,6 +283,42 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/logout"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            app:strokeWidth="0dp"
+            app:strokeColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="@color/red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/logout"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
