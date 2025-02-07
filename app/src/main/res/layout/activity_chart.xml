@@ -60,43 +60,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
+    <TextView
+        android:id="@+id/current_range_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01/01/2025 - 02/07/2025"
+        android:textColor="@color/green"
+        android:layout_marginTop="12dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sub_title" />
+
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        app:singleSelection="true"
         app:checkedButton="@id/bar_chart_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_title">
+        app:layout_constraintTop_toBottomOf="@+id/current_range_date"
+        app:singleSelection="true">
 
         <Button
             android:id="@+id/bar_chart_button"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/bar_chart"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="@string/bar_chart" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/pie_chart_button"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/pie_chart"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="@string/pie_chart" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/line_chart_button"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/line_chart"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="@string/line_chart" />
+            android:textStyle="bold" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -104,9 +117,8 @@
         android:id="@+id/bar_chart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_margin="16dp"
-        android:visibility="visible"
         android:backgroundTint="@color/green"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/pickup_date_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,12 +153,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button_color"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
         android:text="@string/pickup_date"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="8dp"
         android:textStyle="bold"
         app:cornerRadius="10dp"
         app:iconGravity="textStart"
