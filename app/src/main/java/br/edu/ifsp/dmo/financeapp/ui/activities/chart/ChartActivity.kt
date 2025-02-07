@@ -32,11 +32,8 @@ class ChartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setPickupDate()
-        setTroggleButtonClickListener()
-        setBarChart()
-        setPieChart()
-        setLineChart()
+
+        configCharts()
         configListeners()
     }
 
@@ -44,9 +41,7 @@ class ChartActivity : AppCompatActivity() {
         binding.arrowBack.setOnClickListener {
             finish()
         }
-    }
 
-    private fun setPickupDate() {
         binding.pickupDateButton.setOnClickListener {
             val constraintDate = CalendarConstraints.Builder()
                 .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
@@ -56,7 +51,7 @@ class ChartActivity : AppCompatActivity() {
                 .setTitleText("Selecione um intervalo de datas")
                 .setSelection(
                     Pair(MaterialDatePicker.thisMonthInUtcMilliseconds(),
-                    MaterialDatePicker.todayInUtcMilliseconds())
+                        MaterialDatePicker.todayInUtcMilliseconds())
                 )
                 .setTheme(R.style.CustomDatePicker)
                 .setCalendarConstraints(constraintDate)
@@ -65,9 +60,9 @@ class ChartActivity : AppCompatActivity() {
 
             dateRangePicker.addOnPositiveButtonClickListener { selection ->
                 val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                val date1 = Date(selection.first)
-                val date2 = Date(selection.second)
-                val formattedDate = simpleDateFormat.format(date1) + " " + simpleDateFormat.format(date2)
+                val startDate = Date(selection.first)
+                val endDate = Date(selection.second)
+                val formattedDate = simpleDateFormat.format(startDate) + " " + simpleDateFormat.format(endDate)
                 Toast.makeText(this, "Data escolhida: $formattedDate", Toast.LENGTH_LONG).show()
             }
 
@@ -77,9 +72,7 @@ class ChartActivity : AppCompatActivity() {
 
             dateRangePicker.show(supportFragmentManager, "MATERIAL_DATE_PICKER")
         }
-    }
 
-    private fun setTroggleButtonClickListener() {
         binding.toggleButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
@@ -101,6 +94,12 @@ class ChartActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun configCharts() {
+        setBarChart()
+        setPieChart()
+        setLineChart()
     }
 
     private fun setBarChart() {
