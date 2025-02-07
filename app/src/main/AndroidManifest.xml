@@ -28,20 +28,22 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.goals.GoalsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.chart.ChartActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".ui.activities.purchase.AddPurchaseActivity"
-            android:exported="true"
-            android:theme="@style/Theme.FinanceApp">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.chart.ChartActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ui.activities.purchase.AddPurchaseActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FinanceApp">
         </activity>
         <activity
             android:name=".ui.activities.login.LoginActivity"
