@@ -46,4 +46,11 @@
     <string name="name_input">Nome</string>
     <string name="salary_input_hint">Salário</string>
     <string name="salary_input_placeholder">Digite o seu salário</string>
+
+    <string-array name="categories">
+        <item>Eletrônicos</item>
+        <item>Moda</item>
+        <item>Alimentos e bebidas</item>
+        <item>Casa e decoração</item>
+    </string-array>
 </resources>
