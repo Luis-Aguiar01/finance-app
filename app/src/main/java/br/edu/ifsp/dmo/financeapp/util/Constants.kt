@@ -2,6 +2,8 @@ package br.edu.ifsp.dmo.financeapp.util
 
 object Constants {
 
+    const val DATABASE_NAME = "app_finance.db"
+
     const val USER_TB = "tb_users"
     const val USER_EMAIL = "email"
     const val USER_NAME = "name"
