@@ -17,7 +17,7 @@ class UserRepository(context: Context) {
     suspend fun remove(user: User): Boolean{
         return dao.delete(user) > 0
     }
-    suspend fun findByEmail(email: String): User{
+    suspend fun findByEmail(email: String): User?{
         return dao.getUserByEmail(email)
     }
 }
