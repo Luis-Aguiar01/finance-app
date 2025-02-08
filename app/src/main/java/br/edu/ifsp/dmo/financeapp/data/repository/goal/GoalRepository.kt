@@ -13,14 +13,14 @@ class GoalRepository(context: Context) {
     }
 
     suspend fun updateAccumulated(goal: Goal, value: Double): Boolean{
-        return dao.updateAccumulated(goal, value) > 0
+        return dao.updateAccumulated(goal.id, value) > 0
     }
 
     suspend fun updateTarget(goal: Goal, value: Double): Boolean{
-        return dao.updateTarget(goal, value) > 0
+        return dao.updateTarget(goal.id, value) > 0
     }
 
-    suspend fun remove(goal: Goal): Boolean{
+    suspend fun delete(goal: Goal): Boolean{
         return dao.delete(goal) > 0
     }
 

@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
 import br.edu.ifsp.dmo.financeapp.data.entity.goal.Goal
 
 @Dao
@@ -19,11 +18,11 @@ interface GoalDao {
     @Query("SELECT * FROM tb_goals WHERE goal_id = :id")
     suspend fun getGoalById(id: Long): Goal
 
-    @Update
-    suspend fun updateAccumulated(goal: Goal, value: Double): Int
+    @Query("UPDATE tb_goals SET accumulated_value = :value WHERE goal_id = :id")
+    suspend fun updateAccumulated(id: Long, value: Double): Int
 
-    @Update
-    suspend fun updateTarget(goal: Goal, value: Double): Int
+    @Query("UPDATE tb_goals SET target_value = :value WHERE goal_id = :id")
+    suspend fun updateTarget(id: Long, value: Double): Int
 
     @Delete
     suspend fun delete(goal: Goal): Int

@@ -14,16 +14,16 @@ class BillRepository(context: Context) {
     }
 
     suspend fun updateValue(bill: Bill, value: Double): Boolean{
-        return dao.updateValue(bill, value) > 0
+        return dao.updateValue(bill.id, value) > 0
     }
 
     suspend fun remove(bill: Bill): Boolean{
         return dao.delete(bill) > 0
     }
 
-    suspend fun getAllByEmail(email: String): List<Bill> {
+    /*suspend fun getAllByEmail(email: String): List<Bill> {
         return dao.getAllByEmail(email)
-    }
+    }*/
 
     suspend fun getBillById(id: Long): Bill {
         return dao.getBillById(id)
