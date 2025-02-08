@@ -13,11 +13,11 @@ interface GoalDao {
     @Insert
     suspend fun create(goal: Goal): Long
 
-    @Query("SELECT *, (target_value - accumulated_value) as difference FROM tb_goals ORDER BY difference ASC")
-    suspend fun getAll(): List<Goal>
+    @Query("SELECT *, (target_value - accumulated_value) as difference FROM tb_goals WHERE email = :email ORDER BY difference ASC")
+    suspend fun getAllByEmail(email: String): List<Goal>
 
     @Query("SELECT * FROM tb_goals WHERE goal_id = :id")
-    suspend fun getGoal(id: Long): Goal
+    suspend fun getGoalById(id: Long): Goal
 
     @Update
     suspend fun updateAccumulated(goal: Goal, value: Double): Int

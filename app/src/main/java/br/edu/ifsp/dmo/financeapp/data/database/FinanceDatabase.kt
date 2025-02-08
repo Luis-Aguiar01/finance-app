@@ -15,21 +15,24 @@ import br.edu.ifsp.dmo.financeapp.util.Constants
 @Database(entities = [User::class, Bill::class, Goal::class], version = 1)
 abstract class FinanceDatabase: RoomDatabase() {
 
-    private lateinit var instance: FinanceDatabase
+    companion object{
+        private lateinit var instance: FinanceDatabase
 
-    fun getInstance(context: Context): FinanceDatabase {
-        if (!::instance.isInitialized) {
-            synchronized(FinanceDatabase::class) {
-                instance = Room
-                    .databaseBuilder(
-                        context,
-                        FinanceDatabase::class.java,
-                        Constants.DATABASE_NAME
-                    )
-                    .build()
+        fun getInstance(context: Context): FinanceDatabase {
+            if (!::instance.isInitialized) {
+                synchronized(FinanceDatabase::class) {
+                    instance = Room
+                        .databaseBuilder(
+                            context,
+                            FinanceDatabase::class.java,
+                            Constants.DATABASE_NAME
+                        )
+                        .build()
+                }
             }
+            return instance
         }
-        return instance
+
     }
 
     abstract fun getBillDao(): BillDao

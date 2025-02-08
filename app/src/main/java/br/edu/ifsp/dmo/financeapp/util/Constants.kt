@@ -15,6 +15,7 @@ object Constants {
     const val BILL_NAME = "name"
     const val BILL_CATEGORY = "category"
     const val BILL_VALUE = "value"
+    const val BILL_DATE = "bill_date"
 
     const val GOAL_TB = "tb_goals"
     const val GOAL_ID = "goal_id"

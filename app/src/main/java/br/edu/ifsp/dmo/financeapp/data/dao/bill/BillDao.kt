@@ -13,14 +13,14 @@ interface BillDao {
     @Insert
     suspend fun create(bill: Bill): Long
 
-    /*@Query("SELECT * FROM tb_goals ORDER BY data ASC")
-    suspend fun getAll(): List<Bill>*/
+    @Query("SELECT * FROM tb_bills WHERE email = :email ORDER BY bill_date DESC")
+    suspend fun getAllByEmail(email: String): List<Bill>
 
-    @Query("SELECT * FROM tb_goals WHERE goal_id = :id")
-    suspend fun getGoal(id: Long): Bill
+    @Query("SELECT * FROM tb_bills WHERE bill_id = :id")
+    suspend fun getBillById(id: Long): Bill
 
     @Update
-    suspend fun update(bill: Bill, value: Double): Int
+    suspend fun updateValue(bill: Bill, value: Double): Int
 
     @Delete
     suspend fun delete(bill: Bill): Int

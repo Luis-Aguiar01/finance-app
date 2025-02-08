@@ -4,10 +4,13 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.data.enums.BillCategory
 import br.edu.ifsp.dmo.financeapp.util.Constants
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Entity(
     tableName = Constants.BILL_TB,
@@ -39,7 +42,18 @@ class Bill(
 
     @NonNull
     @ColumnInfo(name = Constants.USER_EMAIL)
-    var email: String
+    var email: String,
+
+    date: LocalDate
 ){
+    @ColumnInfo(name = Constants.BILL_DATE)
+    var date: String = ""
+
+    @Ignore
+    private val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+    init {
+        this.date = formatter.format(date)
+    }
 }
 
