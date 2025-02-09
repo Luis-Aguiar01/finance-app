@@ -42,7 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setCardClick() {
         binding.buyCard.setOnClickListener {
-            startActivity(Intent(this, AddPurchaseActivity::class.java))
+            val buyIntent = Intent(this, AddPurchaseActivity::class.java)
+            buyIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(buyIntent)
         }
 
         binding.checkExpensesCard.setOnClickListener {
@@ -50,9 +52,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.financialGoalsCard.setOnClickListener {
-            val profileIntent = Intent(this, GoalsActivity::class.java)
-            profileIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(profileIntent)
+            val financialIntent = Intent(this, GoalsActivity::class.java)
+            financialIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(financialIntent)
         }
 
         binding.fixedBillsCard.setOnClickListener {

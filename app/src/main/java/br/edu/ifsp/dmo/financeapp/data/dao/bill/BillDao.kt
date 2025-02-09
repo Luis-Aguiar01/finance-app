@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import br.edu.ifsp.dmo.financeapp.data.entity.bill.Bill
 
 @Dao
@@ -11,6 +12,9 @@ interface BillDao {
 
     @Insert
     suspend fun create(bill: Bill): Long
+
+    @Update
+    suspend fun update(bill: Bill): Int
 
     @Query("SELECT * FROM tb_bills WHERE email = :email ORDER BY bill_date DESC")
     suspend fun getAllByEmail(email: String): List<Bill>

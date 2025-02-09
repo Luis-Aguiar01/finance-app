@@ -13,6 +13,10 @@ class BillRepository(context: Context) {
         return dao.create(bill) > 0
     }
 
+    suspend fun update(bill: Bill): Boolean{
+        return dao.update(bill) > 0
+    }
+
     suspend fun updateValue(bill: Bill, value: Double): Boolean{
         return dao.updateValue(bill.id, value) > 0
     }
