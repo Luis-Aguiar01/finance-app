@@ -1,6 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.data.datastore
 
 import android.content.Context
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -35,8 +36,8 @@ class DataStoreRepository(context: Context)  {
     }
 
     suspend fun savePreferencesLogout() {
-        dataStore.edit { preferences ->
-            preferences[PreferencesKeys.STAY_LOGGED_IN] = false
+           dataStore.edit { preferences ->
+           preferences[PreferencesKeys.STAY_LOGGED_IN] = false
         }
     }
 

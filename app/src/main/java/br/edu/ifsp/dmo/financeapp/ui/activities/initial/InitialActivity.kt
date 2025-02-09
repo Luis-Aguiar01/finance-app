@@ -39,8 +39,8 @@ class InitialActivity : AppCompatActivity() {
         viewModel.loginPreferences.observe(this, Observer{
             val (stayLoggedIn) = it
             if (stayLoggedIn) {
-
                 startActivity(Intent(this, MainActivity::class.java))
+                Toast.makeText(this, "Entrou config stayloggedIn", Toast.LENGTH_SHORT).show()
                 finish()
             }
         })
@@ -51,7 +51,7 @@ class InitialActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    Toast.makeText(this,"Usuário Registrado com Sucesso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"Usuário registrado com Sucesso", Toast.LENGTH_SHORT).show()
                 }
             }
 
