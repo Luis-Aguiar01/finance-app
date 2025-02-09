@@ -18,15 +18,44 @@ class GoalViewModel(application: Application) : AndroidViewModel(application) {
 
     private var emailUser: String = ""
 
-
     private val _inserted = MutableLiveData<Boolean>()
     val inserted: LiveData<Boolean> = _inserted
+
+    private val _deleted = MutableLiveData<Boolean>()
+    val deleted: LiveData<Boolean> = _deleted
+
+    private val _updated = MutableLiveData<Boolean>()
+    val updated: LiveData<Boolean> = _updated
 
     fun insertGoal(name: String, accumulatedValue: Double, targetValue: Double){
         viewModelScope.launch {
             goalRepository.create(Goal(name = name, accumulated_value = accumulatedValue, target_value = targetValue, email = emailUser))
             _inserted.value = true
             load()
+        }
+    }
+
+    fun removeGoal(id: Long){
+        viewModelScope.launch {
+            val goal = goalRepository.getGoalById(id)
+
+            if(goal != null){
+                goalRepository.delete(goal)
+                _deleted.value = true
+                load()
+            }
+        }
+    }
+
+    fun updateGoal(id: Long, amount: Double){
+        viewModelScope.launch {
+            val goal = goalRepository.getGoalById(id)
+
+            if(goal != null){
+                goalRepository.updateAccumulated(goal, amount)
+                _updated.value = true
+                load()
+            }
         }
     }
 

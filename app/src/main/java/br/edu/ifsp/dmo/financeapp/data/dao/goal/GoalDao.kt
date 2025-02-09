@@ -18,7 +18,7 @@ interface GoalDao {
     @Query("SELECT * FROM tb_goals WHERE goal_id = :id")
     suspend fun getGoalById(id: Long): Goal
 
-    @Query("UPDATE tb_goals SET accumulated_value = :value WHERE goal_id = :id")
+    @Query("UPDATE tb_goals SET accumulated_value = accumulated_value + :value WHERE goal_id = :id")
     suspend fun updateAccumulated(id: Long, value: Double): Int
 
     @Query("UPDATE tb_goals SET target_value = :value WHERE goal_id = :id")
