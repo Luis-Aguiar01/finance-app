@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityLoginBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
+import br.edu.ifsp.dmo.financeapp.util.Constants
 
 class LoginActivity : AppCompatActivity() {
 
@@ -69,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToLogged(){
         val resultIntent = Intent(this, MainActivity::class.java)
+        resultIntent.putExtra(Constants.USER_EMAIL, binding.inputEmail.text.toString())
         setResult(RESULT_OK, resultIntent)
         startActivity(resultIntent)
         finish()

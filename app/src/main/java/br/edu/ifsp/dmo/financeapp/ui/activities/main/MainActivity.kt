@@ -13,6 +13,7 @@ import br.edu.ifsp.dmo.financeapp.ui.activities.historical.HistoricalActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.initial.InitialActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.profile.ProfileActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.purchase.AddPurchaseActivity
+import br.edu.ifsp.dmo.financeapp.util.Constants
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,12 +32,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configObserver() {
-       viewModel.isDisconnected.observe(this, Observer { isDisconnected ->
-           if (isDisconnected){
-               startActivity(Intent(this, InitialActivity::class.java))
-               finish()
-           }
-       })
+        viewModel.isDisconnected.observe(this, Observer { isDisconnected ->
+            if (isDisconnected){
+                startActivity(Intent(this, InitialActivity::class.java))
+                finish()
+            }
+        })
     }
 
     private fun setCardClick() {
@@ -61,7 +62,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.profileCard.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            val profileIntent = Intent(this, ProfileActivity::class.java)
+            profileIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(profileIntent)
         }
 
         binding.logout.setOnClickListener {

@@ -10,5 +10,4 @@ class InitialViewModel(application: Application) : AndroidViewModel(application)
 
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
     val loginPreferences: LiveData<Pair<Boolean, Boolean>> = dataStoreRepository.loginPreferences.asLiveData()
-
 }
