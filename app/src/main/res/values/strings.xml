@@ -49,8 +49,24 @@
 
     <string-array name="categories">
         <item>Eletrônicos</item>
-        <item>Moda</item>
-        <item>Alimentos e bebidas</item>
-        <item>Casa e decoração</item>
+        <item>Casa e Jardim</item>
+        <item>Beleza e Cuidados Pessoais</item>
+        <item>Moda e Acessórios</item>
+        <item>Saúde e Bem-Estar</item>
+        <item>Alimentos e Bebidas</item>
+        <item>Automóveis e Peças</item>
+        <item>Esportes e Lazer</item>
+        <item>Livros e Mídia</item>
+        <item>Brinquedos e Jogos</item>
+        <item>Escritório e Papelaria</item>
+        <item>Pet Shop</item>
+        <item>Viagens e Turismo</item>
+        <item>Serviços</item>
+        <item>Outros</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Fixa</item>
+        <item>Variável</item>
     </string-array>
 </resources>

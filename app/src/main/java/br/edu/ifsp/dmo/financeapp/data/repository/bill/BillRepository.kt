@@ -21,9 +21,9 @@ class BillRepository(context: Context) {
         return dao.delete(bill) > 0
     }
 
-    /*suspend fun getAllByEmail(email: String): List<Bill> {
+    suspend fun getAllByEmail(email: String): List<Bill> {
         return dao.getAllByEmail(email)
-    }*/
+    }
 
     suspend fun getBillById(id: Long): Bill {
         return dao.getBillById(id)

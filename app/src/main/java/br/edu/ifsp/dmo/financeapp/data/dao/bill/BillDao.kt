@@ -12,8 +12,8 @@ interface BillDao {
     @Insert
     suspend fun create(bill: Bill): Long
 
-    /*@Query("SELECT * FROM tb_bills WHERE email = :email ORDER BY bill_date DESC")
-    suspend fun getAllByEmail(email: String): List<Bill>*/
+    @Query("SELECT * FROM tb_bills WHERE email = :email ORDER BY bill_date DESC")
+    suspend fun getAllByEmail(email: String): List<Bill>
 
     @Query("SELECT * FROM tb_bills WHERE bill_id = :id")
     suspend fun getBillById(id: Long): Bill

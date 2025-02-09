@@ -32,7 +32,11 @@ class Bill(
 
     @NonNull
     @ColumnInfo(name = Constants.BILL_CATEGORY)
-    var category: BillCategory,
+    var category: String,
+
+    @NonNull
+    @ColumnInfo(name = Constants.BILL_TYPE)
+    var type: String,
 
     @NonNull
     @ColumnInfo(name = Constants.BILL_VALUE)

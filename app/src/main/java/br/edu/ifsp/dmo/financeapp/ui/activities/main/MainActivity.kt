@@ -50,10 +50,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.financialGoalsCard.setOnClickListener {
-            startActivity(Intent(this, GoalsActivity::class.java))
+            val profileIntent = Intent(this, GoalsActivity::class.java)
+            profileIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(profileIntent)
         }
 
-        binding.fixedBillsCard.setOnClickListener() {
+        binding.fixedBillsCard.setOnClickListener {
             startActivity(Intent(this, FixedBillsActivity::class.java))
         }
 
