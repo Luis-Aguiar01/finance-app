@@ -6,6 +6,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.preferencesOf
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 import br.edu.ifsp.dmo.financeapp.util.dataStore
@@ -24,6 +25,7 @@ class DataStoreRepository(context: Context)  {
         val STAY_LOGGED_IN = booleanPreferencesKey("stay_logged")
         val EMAIL = stringPreferencesKey("email")
         val PASSWORD = stringPreferencesKey("password")
+        val STAY_LOGGED_EMAIL = stringPreferencesKey("stay_logged_email")
     }
 
     suspend fun savePreferences(email: String = "", password: String = "", saveLogin: Boolean, stayLoggedIn: Boolean) {
@@ -41,6 +43,12 @@ class DataStoreRepository(context: Context)  {
         }
     }
 
+    suspend fun saveEmailStayLogged(email: String) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.STAY_LOGGED_EMAIL] = email
+        }
+    }
+
     val loginPreferences: Flow<Pair<Boolean, Boolean>> = dataStore.data.map { preferences ->
         val saveLogin = preferences[PreferencesKeys.SAVE_LOGIN] ?: false
         val stayLoggedIn = preferences[PreferencesKeys.STAY_LOGGED_IN] ?: false
@@ -51,5 +59,10 @@ class DataStoreRepository(context: Context)  {
         val email = preferences[PreferencesKeys.EMAIL] ?: ""
         val password = preferences[PreferencesKeys.PASSWORD] ?: ""
         Pair(email, password)
+    }
+    
+    val emailStayLogged: Flow<String> = dataStore.data.map { preferences ->
+        val email = preferences[PreferencesKeys.STAY_LOGGED_EMAIL] ?: ""
+        email
     }
 }

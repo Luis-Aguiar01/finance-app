@@ -13,6 +13,7 @@ import br.edu.ifsp.dmo.financeapp.databinding.ActivityInitialBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.login.LoginActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.register.RegisterActivity
+import br.edu.ifsp.dmo.financeapp.util.Constants
 
 class InitialActivity : AppCompatActivity() {
 
@@ -37,13 +38,15 @@ class InitialActivity : AppCompatActivity() {
 
         binding.registerButton.setOnClickListener { registerResultLauncher.launch(Intent(this, RegisterActivity::class.java)) }
 
-        viewModel.loginPreferences.observe(this, Observer{
-            val (_, stayLoggedIn) = it
-            if (stayLoggedIn) {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }
-        })
+       viewModel.savedEmail.observe(this, Observer {
+           if (it.isNotBlank()) {
+               val resultIntent = Intent(this, MainActivity::class.java)
+               resultIntent.putExtra(Constants.USER_EMAIL, it)
+               setResult(RESULT_OK, resultIntent)
+               startActivity(resultIntent)
+               finish()
+           }
+       })
     }
 
     private fun configResultLauncher() {

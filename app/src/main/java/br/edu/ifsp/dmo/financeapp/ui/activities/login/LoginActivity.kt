@@ -36,16 +36,15 @@ class LoginActivity : AppCompatActivity() {
         })
 
         viewModel.loginPreferences.observe(this, Observer {
-            val (saveLogin) = it
+            val (saveLogin, stayLogged) = it
             binding.checkboxSaveData.isChecked = saveLogin
+            binding.checkboxStayLogged.isChecked = stayLogged
         })
 
         viewModel.dataPreferences.observe(this, Observer {
             val (email, password) = it
             binding.inputEmail.setText(email)
-            if (email.isNotEmpty()) {
-                binding.inputPassword.setText(password)
-            }
+            binding.inputPassword.setText(password)
         })
     }
 

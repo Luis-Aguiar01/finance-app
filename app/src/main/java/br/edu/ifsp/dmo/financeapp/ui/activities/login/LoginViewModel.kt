@@ -30,7 +30,14 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
                 } else {
                     savePreferences("", "", saveData, stayLogged)
                 }
+
                 _isLogged.value = true
+
+                if (stayLogged) {
+                    dataStoreRepository.saveEmailStayLogged(email)
+                } else {
+                    dataStoreRepository.saveEmailStayLogged("");
+                }
             } else {
                 _isLogged.value = false
             }
