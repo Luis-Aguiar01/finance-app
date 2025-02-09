@@ -74,28 +74,57 @@
         android:id="@+id/text_input_container2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/color_input_text"
-        app:hintTextColor="@color/white"
-        android:textColorHint="@color/white"
-        app:placeholderText="@string/hint_input_password"
-        app:boxStrokeWidth="2dp"
-        android:padding="8dp"
         android:hint="@string/password_hint"
-        app:layout_constraintBottom_toTopOf="@id/login_button"
+        android:padding="8dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/color_input_text"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/text_input_container"
         app:layout_constraintStart_toStartOf="@+id/text_input_container"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_container">
+        app:layout_constraintTop_toBottomOf="@+id/text_input_container"
+        app:placeholderText="@string/hint_input_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/white"
             android:inputType="numberPassword"
-            android:padding="20dp" />
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/checkbox_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_container2"
+        tools:layout_editor_absoluteX="20dp">
+
+        <CheckBox
+            android:id="@+id/checkbox_save_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salvar dados"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_stay_logged"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Manter logado"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
@@ -112,8 +141,8 @@
         app:iconGravity="textStart"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="@+id/text_input_container2"
-        app:layout_constraintStart_toStartOf="@+id/text_input_container2"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_container2" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/text_input_container2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

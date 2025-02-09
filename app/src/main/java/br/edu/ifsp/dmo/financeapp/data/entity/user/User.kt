@@ -23,5 +23,9 @@ class User(
     @NonNull
     @ColumnInfo(name = Constants.USER_SALARY)
     var salary: Double
+
 ) {
+    fun authenticate(email: String, password: String): Boolean{
+        return this.email == email && this.password == password
+    }
 }
