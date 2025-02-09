@@ -27,6 +27,8 @@ class GoalAdapter(private val listener: GoalItemClickListener):
         holder.binding.descriptionItem.text = goal.name
         holder.binding.initialValue.text = goal.accumulated_value.toString()
         holder.binding.finalValue.text = goal.target_value.toString()
+        holder.binding.progressIndicator.max = goal.target_value.toInt()
+        holder.binding.progressIndicator.progress = goal.accumulated_value.toInt()
 
         holder.binding.addButton.setOnClickListener {
             listener.clickUpdateItem(position)
