@@ -2,7 +2,6 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         setCardClick()
         configObserver()
     }
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.logout.setOnClickListener {
-         viewModel.logout()
+            viewModel.logout()
         }
     }
 }

@@ -14,24 +14,24 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
 
     private val userRepository: UserRepository = UserRepository(application)
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
+
     private val _isLogged = MutableLiveData<Boolean>()
     val isLogged : LiveData<Boolean> = _isLogged
 
- val loginPreferences:  LiveData<Pair<Boolean, Boolean>> = dataStoreRepository.loginPreferences.asLiveData()
- val dataPreferences: LiveData<Pair<String, String>> = dataStoreRepository.dataPreferences.asLiveData()
+    val loginPreferences:  LiveData<Pair<Boolean, Boolean>> = dataStoreRepository.loginPreferences.asLiveData()
+    val dataPreferences: LiveData<Pair<String, String>> = dataStoreRepository.dataPreferences.asLiveData()
 
-
-    fun login(email: String, password: String, staylogged: Boolean, save_data: Boolean){
+    fun login(email: String, password: String, stayLogged: Boolean, saveData: Boolean) {
         viewModelScope.launch {
             val user =  userRepository.findByEmail(email)
             if (user != null && user.authenticate(email, password)) {
-                _isLogged.value = true
-                if(save_data){
-                    savePreferences(email, password, save_data, staylogged)
-                }else{
-                    savePreferences("", "", save_data, staylogged)
+                if (saveData) {
+                    savePreferences(email, password, saveData, stayLogged)
+                } else {
+                    savePreferences("", "", saveData, stayLogged)
                 }
-            }else{
+                _isLogged.value = true
+            } else {
                 _isLogged.value = false
             }
         }

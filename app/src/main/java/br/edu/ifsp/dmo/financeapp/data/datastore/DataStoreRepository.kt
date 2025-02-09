@@ -36,8 +36,8 @@ class DataStoreRepository(context: Context)  {
     }
 
     suspend fun savePreferencesLogout() {
-           dataStore.edit { preferences ->
-           preferences[PreferencesKeys.STAY_LOGGED_IN] = false
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.STAY_LOGGED_IN] = false
         }
     }
 

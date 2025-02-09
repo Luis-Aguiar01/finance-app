@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityLoginBinding
+import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -19,24 +20,23 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         configListeners()
         configObservers()
     }
 
     private fun configObservers() {
-        viewModel.isLogged.observe(this, Observer {
-            isLoginCorrect ->
+        viewModel.isLogged.observe(this, Observer { isLoginCorrect ->
             if (isLoginCorrect) {
                 navigateToLogged()
-            }else{
+            } else {
                 Toast.makeText(this, "Erro ao realizar Login!", Toast.LENGTH_SHORT).show()
             }
         })
 
         viewModel.loginPreferences.observe(this, Observer {
-            val (saveLogin, stayLoggedIn) = it
+            val (saveLogin) = it
             binding.checkboxSaveData.isChecked = saveLogin
-            binding.checkboxStayLogged.isChecked = stayLoggedIn
         })
 
         viewModel.dataPreferences.observe(this, Observer {
@@ -57,21 +57,20 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
             val stayLogged = binding.checkboxStayLogged.isChecked
-            val saveData = binding.checkboxSaveData.isChecked()
+            val saveData = binding.checkboxSaveData.isChecked
 
             if (email.isBlank() || password.isBlank()){
                 Toast.makeText(this, "Por favor insira todos os valores.", Toast.LENGTH_SHORT).show()
             }else{
-                viewModel.login(email, password, stayLogged, saveData )
+                viewModel.login(email, password, stayLogged, saveData)
             }
         }
     }
 
     private fun navigateToLogged(){
-            val resultIntent = Intent()
-            setResult(RESULT_OK, resultIntent)
-            finish()
+        val resultIntent = Intent(this, MainActivity::class.java)
+        setResult(RESULT_OK, resultIntent)
+        startActivity(resultIntent)
+        finish()
     }
-
-
 }

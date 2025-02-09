@@ -1,8 +1,6 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
 import android.app.Application
-import android.widget.Toast
-
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +16,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
 
     fun logout(){
         viewModelScope.launch{
-           dataStoreRepository.savePreferencesLogout()
+            dataStoreRepository.savePreferencesLogout()
             _isDisconnected.value = true
         }
     }

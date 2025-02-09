@@ -19,7 +19,7 @@ class InitialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitialBinding
     private lateinit var registerResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var loginResultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var viewModel :InitialViewModel
+    private lateinit var viewModel: InitialViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,7 @@ class InitialActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(InitialViewModel::class.java)
+
         configListeners()
         configResultLauncher()
     }
@@ -37,10 +38,9 @@ class InitialActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener { registerResultLauncher.launch(Intent(this, RegisterActivity::class.java)) }
 
         viewModel.loginPreferences.observe(this, Observer{
-            val (stayLoggedIn) = it
+            val (_, stayLoggedIn) = it
             if (stayLoggedIn) {
                 startActivity(Intent(this, MainActivity::class.java))
-                Toast.makeText(this, "Entrou config stayloggedIn", Toast.LENGTH_SHORT).show()
                 finish()
             }
         })
