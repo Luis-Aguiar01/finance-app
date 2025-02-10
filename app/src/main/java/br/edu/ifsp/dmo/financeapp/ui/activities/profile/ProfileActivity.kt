@@ -1,12 +1,16 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.profile
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityProfileBinding
+import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
 import br.edu.ifsp.dmo.financeapp.util.Constants
 
 class ProfileActivity : AppCompatActivity() {
@@ -65,6 +69,17 @@ class ProfileActivity : AppCompatActivity() {
             if (binding.inputPassword.text.toString() != password) {
                 binding.inputPassword.setText(password)
             }
+        })
+
+        viewModel.editResult.observe(this, Observer { editResult ->
+            val resultIntent = Intent(this, MainActivity::class.java)
+            resultIntent.putExtra(Constants.USER_EMAIL, viewModel.email.value)
+            if (editResult) {
+                setResult(Activity.RESULT_OK ,resultIntent)
+            } else {
+                setResult(Activity.RESULT_CANCELED ,resultIntent)
+            }
+            finish()
         })
     }
 

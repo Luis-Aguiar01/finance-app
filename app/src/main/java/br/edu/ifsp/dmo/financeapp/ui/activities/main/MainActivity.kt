@@ -1,7 +1,12 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.main
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
+    private lateinit var profileResultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        profileResultLauncher = configProfileResultLauncher()
 
         openBundle()
         setCardClick()
@@ -65,7 +72,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.profileCard.setOnClickListener {
             val profileIntent = Intent(this, ProfileActivity::class.java)
-            redirect(profileIntent)
+            profileIntent.putExtra(Constants.USER_EMAIL, viewModel.getEmail())
+            profileResultLauncher.launch(profileIntent)
         }
 
         binding.checkExpensesCard.setOnClickListener {
@@ -91,5 +99,20 @@ class MainActivity : AppCompatActivity() {
     private fun redirect(intent: Intent) {
         intent.putExtra(Constants.USER_EMAIL, viewModel.getEmail())
         startActivity(intent)
+    }
+
+    private fun configProfileResultLauncher(): ActivityResultLauncher<Intent> {
+        return registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val extras = intent.extras
+                val email = extras?.getString(Constants.USER_EMAIL)
+                if (email != null) {
+                    viewModel.setEmail(email)
+                    Toast.makeText(this, "Perfil atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Esse email já está em uso.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

@@ -15,6 +15,9 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
 
     private val userRepository: UserRepository = UserRepository(application)
 
+    private val _editResult = MutableLiveData<Boolean>()
+    val editResult: LiveData<Boolean> = _editResult
+
     private val _name = MutableLiveData<String>()
     val name: LiveData<String> = _name
 
@@ -45,12 +48,14 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
             if(!_email.value.isNullOrBlank()) {
                 //verifica se o email foi alterado e caso ele ja esteja em uso, retorna
                 if(_email.value != oldEmail && userRepository.findByEmail(_email.value!!) != null) {
+                    _editResult.value = false
                     return@launch
                 }
             }
             val user = User(_email.value!!, _name.value!!, _password.value!!)
             userRepository.update(user)
             updateData(_email.value!!)
+            _editResult.value = true
         }
     }
 
