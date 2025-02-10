@@ -106,6 +106,7 @@
     <string name="fil_out_all_fields_error">Preencha todos os campos.</string>
     <string name="register_error">Não foi possível realizar o cadastro...</string>
     <string name="fill_out_all_fields_error">Preencha todos os campos...</string>
+    <string name="edit_purchase">Editar compra</string>
 
 
     <string-array name="categories">

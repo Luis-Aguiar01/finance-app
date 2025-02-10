@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityAddPurchaseBinding
 import br.edu.ifsp.dmo.financeapp.databinding.LayoutDialogAddPurchaseBinding
+import br.edu.ifsp.dmo.financeapp.databinding.LayoutDialogEditPurchaseBinding
 import br.edu.ifsp.dmo.financeapp.ui.adapter.bill.BillAdapter
 import br.edu.ifsp.dmo.financeapp.ui.listeners.bill.BillItemClickListener
 import br.edu.ifsp.dmo.financeapp.util.Constants
@@ -127,7 +128,7 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
 
         viewModel.selectedBill.observe(this) { bill ->
             if (bill != null) {
-                val dialogBinding = LayoutDialogAddPurchaseBinding.inflate(layoutInflater)
+                val dialogBinding = LayoutDialogEditPurchaseBinding.inflate(layoutInflater)
                 val dialog = MaterialAlertDialogBuilder(this, R.style.CustomDialogTheme)
                     .setView(dialogBinding.root)
                     .show()
