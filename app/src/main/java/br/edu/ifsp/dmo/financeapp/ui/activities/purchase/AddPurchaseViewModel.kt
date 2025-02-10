@@ -75,11 +75,16 @@ class AddPurchaseViewModel(application: Application): AndroidViewModel(applicati
 
     fun setEmail(email: String){
         emailUser = email
+        load()
     }
 
     private fun load() {
         viewModelScope.launch {
             _bills.value = billRepository.getAllByEmail(emailUser)
         }
+    }
+
+    fun clearSelectedBill() {
+        _selectedBill.value = null
     }
 }

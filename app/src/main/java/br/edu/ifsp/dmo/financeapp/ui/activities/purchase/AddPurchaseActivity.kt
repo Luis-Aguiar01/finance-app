@@ -29,10 +29,10 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
 
         viewModel = ViewModelProvider(this).get(AddPurchaseViewModel::class.java)
 
+        openBundle()
         configListeners()
         configRecyclerView()
         configObservers()
-        openBundle()
     }
 
     private fun configListeners() {
@@ -110,6 +110,7 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
     }
 
     override fun clickUpdateItem(id: Long) {
+        viewModel.clearSelectedBill()
         viewModel.getBillById(id)
 
         viewModel.selectedBill.observe(this) { bill ->
@@ -121,7 +122,7 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
 
                 dialogBinding.inputProduct.setText(bill.name)
                 dialogBinding.inputPrice.setText(bill.value.toString())
-                dialogBinding.inputCategory.setText(bill.category)
+                dialogBinding.inputCategory.setText(bill.category, false)
 
                 dialogBinding.confirmButton.setOnClickListener {
                     val newProduct = dialogBinding.inputProduct.text.toString()
@@ -139,6 +140,7 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
                 dialogBinding.cancelButton.setOnClickListener {
                     dialog.dismiss()
                 }
+                viewModel.selectedBill.removeObservers(this)
             }
         }
     }
