@@ -15,7 +15,8 @@ import br.edu.ifsp.dmo.financeapp.util.Constants
             entity = User::class,
             parentColumns = [Constants.USER_EMAIL],
             childColumns = [Constants.USER_EMAIL],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         )
     ]
 )

@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class ProfileViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -54,6 +55,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             userRepository.update(_email.value!!, _name.value!!, _password.value!!, oldEmail)
             updateData(_email.value!!)
             _editResult.value = true
+
         }
     }
 
