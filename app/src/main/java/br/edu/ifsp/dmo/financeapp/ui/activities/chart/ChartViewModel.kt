@@ -18,11 +18,11 @@ class ChartViewModel(application: Application) : AndroidViewModel(application) {
 
     private var emailUser = ""
 
-    /*fun getSumByCategory(email: String){
+    fun getTotalByDate(initialDate: Long, finalDate: Long) {
         viewModelScope.launch {
-            _totalByCategory.value = billRepository.getTotalBillByCategory(email)
+            _totalByCategory.value = billRepository.getTotalBillByCategoryAndDate(emailUser, initialDate, finalDate)
         }
-    }*/
+    }
 
     fun setEmail(email: String){
         emailUser = email
@@ -34,10 +34,4 @@ class ChartViewModel(application: Application) : AndroidViewModel(application) {
             _totalByCategory.value = billRepository.getTotalBillByCategory(emailUser)
         }
     }
-
-
-    /*private fun load(){
-        getSumByCategory(email)
-    }*/
-
 }

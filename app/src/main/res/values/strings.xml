@@ -20,7 +20,7 @@
     <string name="add_purchase_title">Adicionar Compra</string>
     <string name="recent_purchases_subtitle">Compras Recentes</string>
     <string name="pickup_date">Escolher Data</string>
-    <string name="title_chart_page">Gráfico de gastos</string>
+    <string name="title_chart_page">Gráfico de Gastos</string>
     <string name="pickup_a_date_subtitle">Selecione uma data:</string>
     <string name="bar_chart">Barra</string>
     <string name="pie_chart">Pizza</string>

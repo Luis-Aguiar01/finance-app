@@ -30,7 +30,9 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
+import java.util.TimeZone
 
 class ChartActivity : AppCompatActivity() {
 
@@ -39,7 +41,6 @@ class ChartActivity : AppCompatActivity() {
     private val customColors = listOf(
         Color.rgb(255, 99, 132),
         Color.rgb(54, 162, 235),
-        Color.rgb(75, 192, 192),
         Color.rgb(255, 206, 86),
         Color.rgb(153, 102, 255),
         Color.rgb(255, 159, 64),
@@ -86,11 +87,33 @@ class ChartActivity : AppCompatActivity() {
                 .build()
 
             dateRangePicker.addOnPositiveButtonClickListener { selection ->
+                val oneDayMillis = 24 * 60 * 60 * 1000 // 1 dia em milissegundos
+                val timeZone = TimeZone.getDefault()
+
+                val localCalendar = Calendar.getInstance(timeZone)
+
+                localCalendar.timeInMillis = selection.first + oneDayMillis
+                localCalendar.set(Calendar.HOUR_OF_DAY, 0)
+                localCalendar.set(Calendar.MINUTE, 0)
+                localCalendar.set(Calendar.SECOND, 0)
+                localCalendar.set(Calendar.MILLISECOND, 0)
+                val startDateMillis = localCalendar.timeInMillis
+
+                localCalendar.timeInMillis = selection.second + oneDayMillis
+                localCalendar.set(Calendar.HOUR_OF_DAY, 23)
+                localCalendar.set(Calendar.MINUTE, 59)
+                localCalendar.set(Calendar.SECOND, 59)
+                localCalendar.set(Calendar.MILLISECOND, 999)
+                val endDateMillis = localCalendar.timeInMillis
+
                 val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                val startDate = Date(selection.first)
-                val endDate = Date(selection.second)
-                val formattedDate = simpleDateFormat.format(startDate) + " " + simpleDateFormat.format(endDate)
-                Toast.makeText(this, "Data escolhida: $formattedDate", Toast.LENGTH_LONG).show()
+                val formattedStartDate = simpleDateFormat.format(Date(startDateMillis))
+                val formattedEndDate = simpleDateFormat.format(Date(endDateMillis))
+
+                binding.currentRangeDate.text = "$formattedStartDate - $formattedEndDate"
+                binding.currentRangeDate.visibility = View.VISIBLE
+
+                viewModel.getTotalByDate(startDateMillis, endDateMillis)
             }
 
             dateRangePicker.addOnNegativeButtonClickListener {

@@ -34,7 +34,11 @@ interface BillDao {
     suspend fun getBillByDate(initialDate: Long, finalDate: Long, email: String) : List<Bill>
 
     @MapInfo(keyColumn = Constants.BILL_CATEGORY, valueColumn = Constants.BILL_TOTAL_BY_CATEGORY)
-    @Query("SELECT category, SUM(value) as total FROM tb_bills WHERE email = :email GROUP BY category ORDER BY total DESC LIMIT 7")
+    @Query("SELECT category, SUM(value) as total FROM tb_bills WHERE email = :email GROUP BY category ORDER BY total DESC LIMIT 5")
     suspend fun getSumByCategory(email: String): Map<String, Double>
 
- }
+    @MapInfo(keyColumn = Constants.BILL_CATEGORY, valueColumn = Constants.BILL_TOTAL_BY_CATEGORY)
+    @Query("SELECT category, SUM(value) as total FROM tb_bills WHERE email = :email AND bill_date BETWEEN :initialDate AND :finalDate GROUP BY category ORDER BY total DESC LIMIT 5")
+    suspend fun getSumByCategoryAndDate(email: String, initialDate: Long, finalDate: Long): Map<String, Double>
+
+}

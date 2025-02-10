@@ -36,16 +36,14 @@ class BillRepository(context: Context) {
     }
 
     suspend fun getBillByDate(initialDate: Long, finalDate: Long, email: String): List<Bill>{
-
-        var lista = dao.getBillByDate(initialDate, finalDate, email)
-
-        return lista
+        return dao.getBillByDate(initialDate, finalDate, email)
     }
 
-    suspend fun getTotalBillByCategory(email: String): Map<String, Double>{
+    suspend fun getTotalBillByCategory(email: String): Map<String, Double> {
+        return dao.getSumByCategory(email)
+    }
 
-        var map = dao.getSumByCategory(email)
-
-        return map
+    suspend fun getTotalBillByCategoryAndDate(emailUser: String, initialDate: Long, finalDate: Long): Map<String, Double> {
+        return dao.getSumByCategoryAndDate(emailUser, initialDate, finalDate)
     }
 }
