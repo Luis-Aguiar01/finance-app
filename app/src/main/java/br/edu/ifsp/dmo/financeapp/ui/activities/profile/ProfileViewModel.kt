@@ -1,6 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.profile
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -50,8 +51,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
                     return@launch
                 }
             }
-            val user = User(_email.value!!, _name.value!!, _password.value!!)
-            userRepository.update(user)
+            userRepository.update(_email.value!!, _name.value!!, _password.value!!, oldEmail)
             updateData(_email.value!!)
             _editResult.value = true
         }

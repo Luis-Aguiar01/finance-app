@@ -16,6 +16,10 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: ProfileViewModel
 
+    companion object {
+        const val RESULT_ERROR = Activity.RESULT_FIRST_USER + 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -75,7 +79,7 @@ class ProfileActivity : AppCompatActivity() {
             if (editResult) {
                 setResult(Activity.RESULT_OK, resultIntent)
             } else {
-                setResult(Activity.RESULT_CANCELED, resultIntent)
+                setResult(RESULT_ERROR, resultIntent)
             }
             finish()
         })

@@ -3,6 +3,7 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -102,21 +103,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun configProfileResultLauncher(): ActivityResultLauncher<Intent> {
         return registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val extras = intent.extras
-                val email = extras?.getString(Constants.USER_EMAIL)
-                if (email != null) {
-                    viewModel.setEmail(email)
+            when (result.resultCode) {
+                Activity.RESULT_OK -> {
+                    val extras = result.data?.extras
+                    val email = extras?.getString(Constants.USER_EMAIL)
+                    if (email != null) {
+                        viewModel.setEmail(email)
+                        Toast.makeText(
+                            this,
+                            getString(R.string.profile_updated_successfully),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                ProfileActivity.RESULT_ERROR -> {
                     Toast.makeText(
                         this,
-                        getString(R.string.profile_updated_successfully), Toast.LENGTH_SHORT
+                        getString(R.string.email_already_registered_error),
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
-            } else {
-                Toast.makeText(
-                    this,
-                    getString(R.string.email_already_registered_error), Toast.LENGTH_SHORT
-                ).show()
             }
         }
     }

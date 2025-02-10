@@ -12,15 +12,15 @@ class UserRepository(context: Context) {
         return dao.create(user) > 0
     }
 
-    suspend fun update(user: User): Boolean {
-        return dao.update(user) > 0
-    }
-
     suspend fun remove(user: User): Boolean {
         return dao.delete(user) > 0
     }
 
     suspend fun findByEmail(email: String): User? {
         return dao.getUserByEmail(email)
+    }
+
+    suspend fun update(newEmail: String, newName: String, newPassword: String, oldEmail: String): Boolean {
+        return dao.update(newEmail, newName, newPassword, oldEmail) > 0
     }
 }
