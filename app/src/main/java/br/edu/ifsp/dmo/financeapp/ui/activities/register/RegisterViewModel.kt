@@ -18,9 +18,9 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     fun insertUser(name: String, email: String, password: String) {
         viewModelScope.launch {
-            val user = userRepository.findByEmail(email)
+            val user = userRepository.findByEmail(email.trim())
             if (user == null) {
-                userRepository.create(User(email, name, password))
+                userRepository.create(User(email.trim(), name, password))
                 _insertedUser.value = true
             } else {
                 _insertedUser.value = false
