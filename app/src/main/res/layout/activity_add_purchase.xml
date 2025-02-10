@@ -13,6 +13,7 @@
         android:id="@+id/arrow_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/arrow_back_content_description"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/shopping_cart_content_description"
         android:src="@drawable/ic_shopping_cart"
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/add_float_button_content_description"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -57,9 +60,9 @@
         android:id="@+id/sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/recent_purchases_subtitle"
         android:textColor="@color/white"
-        android:layout_marginTop="32dp"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +93,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="604dp" />
-
+        app:layout_constraintGuide_percent="0.89" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

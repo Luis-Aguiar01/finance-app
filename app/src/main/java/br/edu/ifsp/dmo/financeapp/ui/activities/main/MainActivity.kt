@@ -79,9 +79,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun openBundle() {
         val extras = intent.extras
-        if(extras != null) {
+        if (extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
-            if(email != null) {
+            if (email != null) {
                 viewModel.setEmail(email)
             }
         }

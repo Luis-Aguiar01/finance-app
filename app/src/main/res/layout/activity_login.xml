@@ -13,6 +13,7 @@
         android:id="@+id/arrow_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/arrow_back_content_description"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/login_icon_content_description"
         android:src="@drawable/ic_login"
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,26 +49,26 @@
         android:id="@+id/text_input_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/color_input_text"
-        app:hintTextColor="@color/white"
-        android:textColorHint="@color/white"
-        app:placeholderText="@string/hint_input_email"
-        app:boxStrokeWidth="2dp"
-        android:padding="8dp"
         android:hint="@string/email_hint"
+        android:padding="8dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/color_input_text"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/text_input_container2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3">
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:placeholderText="@string/hint_input_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/white"
             android:inputType="textEmailAddress"
-            android:padding="20dp" />
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,8 +102,8 @@
         android:id="@+id/checkbox_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintTop_toBottomOf="@+id/text_input_container2"
         tools:layout_editor_absoluteX="20dp">
@@ -110,19 +112,18 @@
             android:id="@+id/checkbox_save_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salvar dados"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:text="@string/save_data_checkbox"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/checkbox_stay_logged"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Manter logado"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
-
+            android:layout_marginStart="30dp"
+            android:text="@string/stay_logged_checkbox"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

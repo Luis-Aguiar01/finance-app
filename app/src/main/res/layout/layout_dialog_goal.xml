@@ -10,10 +10,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar nova meta"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_new_goal_title_dialog"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:layout_marginTop="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +23,7 @@
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:contentDescription="@string/rocket_content_description"
         android:src="@drawable/ic_rocket"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +33,9 @@
         android:id="@+id/text_input_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Produto"
-        android:padding="8dp"
         android:layout_marginTop="20dp"
+        android:hint="@string/product_form_hint"
+        android:padding="8dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
@@ -42,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:placeholderText="Informe o nome do produto">
+        app:placeholderText="@string/product_description_placeholder_goal_dialog">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_product"
@@ -59,14 +60,14 @@
         android:id="@+id/text_input_container2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantidade inicial"
+        android:hint="@string/initial_quantity_dialog_goal"
         android:padding="8dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
         app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/text_input_container"
-        app:placeholderText="Informe a montante atual"
+        app:placeholderText="@string/initial_quantity_placeholder_goal_dialog"
         tools:layout_editor_absoluteX="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -84,7 +85,7 @@
         android:id="@+id/text_input_container3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantidade final"
+        android:hint="@string/final_quantity_goal_dialog"
         android:padding="8dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
@@ -93,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_input_container2"
-        app:placeholderText="Informe o valor final">
+        app:placeholderText="@string/final_quantity_placeholder_goal_dialog">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_final_amount"
@@ -114,7 +115,7 @@
         android:backgroundTint="@color/blue"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:text="Adicionar"
+        android:text="@string/add_button_dialog"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -131,7 +132,7 @@
         android:backgroundTint="@color/red"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
-        android:text="Cancelar"
+        android:text="@string/cancel_button_dialog"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"

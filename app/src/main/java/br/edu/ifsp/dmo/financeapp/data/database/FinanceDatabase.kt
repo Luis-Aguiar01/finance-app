@@ -15,7 +15,7 @@ import br.edu.ifsp.dmo.financeapp.util.Constants
 @Database(entities = [User::class, Bill::class, Goal::class], version = 1)
 abstract class FinanceDatabase: RoomDatabase() {
 
-    companion object{
+    companion object {
         private lateinit var instance: FinanceDatabase
 
         fun getInstance(context: Context): FinanceDatabase {
@@ -32,7 +32,6 @@ abstract class FinanceDatabase: RoomDatabase() {
             }
             return instance
         }
-
     }
 
     abstract fun getBillDao(): BillDao

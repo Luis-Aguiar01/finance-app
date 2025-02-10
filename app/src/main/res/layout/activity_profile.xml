@@ -13,6 +13,7 @@
         android:id="@+id/arrow_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/arrow_back_content_description"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/person_icon_content_description"
         android:src="@drawable/ic_profile"
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,8 +49,8 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/profile_page_subtitle"
         android:layout_marginTop="20dp"
+        android:text="@string/profile_page_subtitle"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -60,25 +62,25 @@
         android:id="@+id/container_input1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/color_input_text"
-        app:hintTextColor="@color/white"
-        android:textColorHint="@color/white"
-        app:placeholderText="@string/input_name_placeholder"
-        app:boxStrokeWidth="2dp"
-        android:padding="8dp"
         android:hint="@string/nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/color_input_text"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/container_input2"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle">
+        app:layout_constraintEnd_toEndOf="@+id/subtitle"
+        app:layout_constraintStart_toStartOf="@+id/subtitle"
+        app:layout_constraintTop_toBottomOf="@+id/subtitle"
+        app:placeholderText="@string/input_name_placeholder">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:inputType="textPersonName" />
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,9 +94,9 @@
         app:boxStrokeColor="@color/color_input_text"
         app:boxStrokeWidth="2dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/container_input3"
+        app:layout_constraintEnd_toEndOf="@+id/container_input1"
+        app:layout_constraintStart_toStartOf="@+id/container_input1"
         app:layout_constraintTop_toBottomOf="@+id/container_input1"
         app:placeholderText="@string/email_placeholder">
 
@@ -120,9 +122,9 @@
         app:boxStrokeColor="@color/color_input_text"
         app:boxStrokeWidth="2dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/edit_button"
+        app:layout_constraintEnd_toEndOf="@+id/container_input2"
+        app:layout_constraintStart_toStartOf="@+id/container_input2"
         app:layout_constraintTop_toBottomOf="@+id/container_input2"
         app:placeholderText="@string/password_placeholder">
 

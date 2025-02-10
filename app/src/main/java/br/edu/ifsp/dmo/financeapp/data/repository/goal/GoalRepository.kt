@@ -8,7 +8,7 @@ class GoalRepository(context: Context) {
     private val database = FinanceDatabase.getInstance(context)
     private val dao = database.getGoalDao()
 
-    suspend fun create(goal: Goal): Boolean{
+    suspend fun create(goal: Goal): Boolean {
         return dao.create(goal) > 0
     }
 
@@ -16,11 +16,11 @@ class GoalRepository(context: Context) {
         return dao.updateAccumulated(goal.id, value) > 0
     }
 
-    suspend fun updateTarget(goal: Goal, value: Double): Boolean{
+    suspend fun updateTarget(goal: Goal, value: Double): Boolean {
         return dao.updateTarget(goal.id, value) > 0
     }
 
-    suspend fun delete(goal: Goal): Boolean{
+    suspend fun delete(goal: Goal): Boolean {
         return dao.delete(goal) > 0
     }
 

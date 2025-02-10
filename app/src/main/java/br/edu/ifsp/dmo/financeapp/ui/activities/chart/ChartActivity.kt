@@ -3,7 +3,6 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.chart
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
 import androidx.lifecycle.Observer
@@ -12,20 +11,13 @@ import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityChartBinding
 import br.edu.ifsp.dmo.financeapp.util.Constants
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
@@ -146,7 +138,7 @@ class ChartActivity : AppCompatActivity() {
             BarEntry(index.toFloat(), value.toFloat())
         }
 
-        val dataSet = BarDataSet(entries, "Compras").apply {
+        val dataSet = BarDataSet(entries, "Gastos por categoria").apply {
             colors = customColors
             valueTextColor = Color.WHITE
             valueTextSize = 9f
@@ -222,7 +214,7 @@ class ChartActivity : AppCompatActivity() {
         val extras = intent.extras
         if(extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
-            if(email != null) {
+            if (email != null) {
                 viewModel.setEmail(email)
             }
         }

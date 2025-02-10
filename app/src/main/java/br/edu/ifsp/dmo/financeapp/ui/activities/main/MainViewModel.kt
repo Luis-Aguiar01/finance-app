@@ -11,9 +11,9 @@ import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
-
     private val userRepository = UserRepository(application)
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
+
     private val _isDisconnected = MutableLiveData<Boolean>()
     val isDisconnected : LiveData<Boolean> = _isDisconnected
 
