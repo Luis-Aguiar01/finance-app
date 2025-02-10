@@ -3,7 +3,6 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun configObserver() {
         viewModel.isDisconnected.observe(this, Observer { isDisconnected ->
-            if (isDisconnected){
+            if (isDisconnected) {
                 startActivity(Intent(this, InitialActivity::class.java))
                 finish()
             }
@@ -108,10 +107,16 @@ class MainActivity : AppCompatActivity() {
                 val email = extras?.getString(Constants.USER_EMAIL)
                 if (email != null) {
                     viewModel.setEmail(email)
-                    Toast.makeText(this, "Perfil atualizado com sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.profile_updated_successfully), Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
-                Toast.makeText(this, "Esse email já está em uso.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.email_already_registered_error), Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

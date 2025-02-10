@@ -5,11 +5,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import br.edu.ifsp.dmo.financeapp.data.entity.user.User
+import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(application: Application): AndroidViewModel(application) {
+class RegisterViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = UserRepository(application)
 

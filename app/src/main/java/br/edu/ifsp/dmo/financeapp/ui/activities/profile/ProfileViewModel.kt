@@ -1,8 +1,6 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.profile
 
 import android.app.Application
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +9,7 @@ import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(application: Application): AndroidViewModel(application) {
+class ProfileViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository: UserRepository = UserRepository(application)
 
@@ -31,9 +29,9 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
 
     fun updateData(email: String) {
         viewModelScope.launch {
-            if(email.isNotBlank()) {
+            if (email.isNotBlank()) {
                 val user: User? = userRepository.findByEmail(email)
-                if(user != null) {
+                if (user != null) {
                     _name.value = user.name
                     _email.value = user.email
                     _password.value = user.password
@@ -45,9 +43,9 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
 
     fun edit() {
         viewModelScope.launch {
-            if(!_email.value.isNullOrBlank()) {
+            if (!_email.value.isNullOrBlank()) {
                 //verifica se o email foi alterado e caso ele ja esteja em uso, retorna
-                if(_email.value != oldEmail && userRepository.findByEmail(_email.value!!) != null) {
+                if (_email.value != oldEmail && userRepository.findByEmail(_email.value!!) != null) {
                     _editResult.value = false
                     return@launch
                 }

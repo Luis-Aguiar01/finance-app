@@ -7,10 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.dmo.financeapp.R
-import br.edu.ifsp.dmo.financeapp.data.entity.bill.Bill
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityAddPurchaseBinding
 import br.edu.ifsp.dmo.financeapp.databinding.LayoutDialogAddPurchaseBinding
-import br.edu.ifsp.dmo.financeapp.databinding.LayoutDialogUpdateGoalBinding
 import br.edu.ifsp.dmo.financeapp.ui.adapter.bill.BillAdapter
 import br.edu.ifsp.dmo.financeapp.ui.listeners.bill.BillItemClickListener
 import br.edu.ifsp.dmo.financeapp.util.Constants
@@ -56,7 +54,11 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
                     viewModel.insertPurchase(product, price.toDouble(), category)
                     dialog.dismiss()
                 } else {
-                    Toast.makeText(this, "Adicione todas as informações do produto.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.add_all_product_informations_error),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -73,20 +75,30 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
 
     private fun configObservers() {
         viewModel.inserted.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Gasto adicionado com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.bill_added_successfully),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
         viewModel.deleted.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Gasto deletado com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.bill_deleted_successfuly), Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
         viewModel.updated.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Gasto atualizado com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.bill_updated_successfully), Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
@@ -95,11 +107,11 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
         })
     }
 
-    private fun openBundle(){
+    private fun openBundle() {
         val extras = intent.extras
-        if(extras != null) {
+        if (extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
-            if(email != null) {
+            if (email != null) {
                 viewModel.setEmail(email)
             }
         }
@@ -133,7 +145,10 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
                         dialog.dismiss()
                         viewModel.updatePurchase(id, newProduct, newCategory, newPrice.toDouble())
                     } else {
-                        Toast.makeText(this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            getString(R.string.fil_out_all_fields_error), Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 

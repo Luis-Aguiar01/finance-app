@@ -11,6 +11,7 @@ class UserRepository(context: Context) {
     suspend fun create(user: User): Boolean {
         return dao.create(user) > 0
     }
+
     suspend fun update(user: User): Boolean {
         return dao.update(user) > 0
     }

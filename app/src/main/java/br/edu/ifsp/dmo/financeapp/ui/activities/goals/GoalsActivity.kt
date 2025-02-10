@@ -34,22 +34,29 @@ class GoalsActivity : AppCompatActivity(), GoalItemClickListener {
         configRecyclerView()
     }
 
-    private fun configObservers(){
+    private fun configObservers() {
         viewModel.inserted.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Meta adicionada com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(this, getString(R.string.goal_added_successfuly), Toast.LENGTH_SHORT)
+                    .show()
             }
         })
 
         viewModel.deleted.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Meta deletada com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.goal_deleted_successfuly), Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
         viewModel.updated.observe(this, Observer {
-            if(it){
-                Toast.makeText(this, "Meta atualizada com sucesso.", Toast.LENGTH_SHORT).show()
+            if (it) {
+                Toast.makeText(
+                    this,
+                    getString(R.string.goal_updated_successfuly), Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
@@ -79,14 +86,20 @@ class GoalsActivity : AppCompatActivity(), GoalItemClickListener {
                     val dInitialAmount = initialAmount.toDouble()
                     val dFinalAmount = finalAmount.toDouble()
 
-                    if(dFinalAmount >= dInitialAmount){
+                    if (dFinalAmount >= dInitialAmount) {
                         viewModel.insertGoal(product, dInitialAmount, dFinalAmount)
                         dialog.dismiss()
                     } else {
-                        Toast.makeText(this, "A meta final não pode ser menor do que a quantidade inicial.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            getString(R.string.goal_error_values), Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(this, "Adicione todas as informações da meta.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.goal_error_empty_informations), Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -96,17 +109,17 @@ class GoalsActivity : AppCompatActivity(), GoalItemClickListener {
         }
     }
 
-    private fun openBundle(){
+    private fun openBundle() {
         val extras = intent.extras
-        if(extras != null) {
+        if (extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
-            if(email != null) {
+            if (email != null) {
                 viewModel.setEmail(email)
             }
         }
     }
 
-    private fun configRecyclerView(){
+    private fun configRecyclerView() {
         binding.listGoals.layoutManager = LinearLayoutManager(this)
         binding.listGoals.adapter = adapter
     }
@@ -131,7 +144,8 @@ class GoalsActivity : AppCompatActivity(), GoalItemClickListener {
 
                 viewModel.updateGoal(id, addAmount)
             } else {
-                Toast.makeText(this, "Informe a quantida.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.empty_quantity_error), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
                 setResult(RESULT_OK, resultIntent)
                 finish()
             } else {
-                Toast.makeText(this, "Não foi possível realizar o cadastro...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.register_error), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -39,16 +40,19 @@ class RegisterActivity : AppCompatActivity() {
     private fun configListeners() {
         binding.arrowBack.setOnClickListener { finish() }
 
-        binding.registerButton.setOnClickListener{
+        binding.registerButton.setOnClickListener {
 
-            val email =  binding.inputEmail.text.toString()
-            val name =  binding.inputName.text.toString()
-            val password =  binding.inputPassword.text.toString()
+            val email = binding.inputEmail.text.toString()
+            val name = binding.inputName.text.toString()
+            val password = binding.inputPassword.text.toString()
 
-            if (email.isNotBlank() && name.isNotBlank() && password.isNotBlank()){
+            if (email.isNotBlank() && name.isNotBlank() && password.isNotBlank()) {
                 viewModel.insertUser(name, email, password)
             } else {
-                Toast.makeText(this, "Preencha todos os campos...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.fill_out_all_fields_error), Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

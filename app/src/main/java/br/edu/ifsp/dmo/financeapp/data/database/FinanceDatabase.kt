@@ -13,7 +13,7 @@ import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.util.Constants
 
 @Database(entities = [User::class, Bill::class, Goal::class], version = 1)
-abstract class FinanceDatabase: RoomDatabase() {
+abstract class FinanceDatabase : RoomDatabase() {
 
     companion object {
         private lateinit var instance: FinanceDatabase

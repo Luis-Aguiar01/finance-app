@@ -27,19 +27,26 @@ class GoalViewModel(application: Application) : AndroidViewModel(application) {
     private val _updated = MutableLiveData<Boolean>()
     val updated: LiveData<Boolean> = _updated
 
-    fun insertGoal(name: String, accumulatedValue: Double, targetValue: Double){
+    fun insertGoal(name: String, accumulatedValue: Double, targetValue: Double) {
         viewModelScope.launch {
-            goalRepository.create(Goal(name = name, accumulated_value = accumulatedValue, target_value = targetValue, email = emailUser))
+            goalRepository.create(
+                Goal(
+                    name = name,
+                    accumulated_value = accumulatedValue,
+                    target_value = targetValue,
+                    email = emailUser
+                )
+            )
             _inserted.value = true
             load()
         }
     }
 
-    fun removeGoal(id: Long){
+    fun removeGoal(id: Long) {
         viewModelScope.launch {
             val goal = goalRepository.getGoalById(id)
 
-            if(goal != null){
+            if (goal != null) {
                 goalRepository.delete(goal)
                 _deleted.value = true
                 load()
@@ -47,11 +54,11 @@ class GoalViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun updateGoal(id: Long, amount: Double){
+    fun updateGoal(id: Long, amount: Double) {
         viewModelScope.launch {
             val goal = goalRepository.getGoalById(id)
 
-            if(goal != null){
+            if (goal != null) {
                 goalRepository.updateAccumulated(goal, amount)
                 _updated.value = true
                 load()
@@ -59,7 +66,7 @@ class GoalViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun setEmail(email: String){
+    fun setEmail(email: String) {
         emailUser = email
         load()
     }

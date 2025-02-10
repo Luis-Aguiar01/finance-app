@@ -10,7 +10,7 @@ import br.edu.ifsp.dmo.financeapp.data.enums.BillCategory
 import br.edu.ifsp.dmo.financeapp.data.repository.bill.BillRepository
 import kotlinx.coroutines.launch
 
-class AddPurchaseViewModel(application: Application): AndroidViewModel(application) {
+class AddPurchaseViewModel(application: Application) : AndroidViewModel(application) {
     private val billRepository: BillRepository = BillRepository(application)
 
     private val _bills = MutableLiveData<List<Bill>>()
@@ -32,7 +32,16 @@ class AddPurchaseViewModel(application: Application): AndroidViewModel(applicati
 
     fun insertPurchase(name: String, value: Double, category: String) {
         viewModelScope.launch {
-            billRepository.create(Bill(name = name, value = value, category = category , type = BillCategory.VARIABLE.toString(), email = emailUser, date = System.currentTimeMillis()))
+            billRepository.create(
+                Bill(
+                    name = name,
+                    value = value,
+                    category = category,
+                    type = BillCategory.VARIABLE.toString(),
+                    email = emailUser,
+                    date = System.currentTimeMillis()
+                )
+            )
             _inserted.value = true
             load()
         }
@@ -42,7 +51,7 @@ class AddPurchaseViewModel(application: Application): AndroidViewModel(applicati
         viewModelScope.launch {
             val bill = billRepository.getBillById(id)
 
-            if(bill != null) {
+            if (bill != null) {
                 billRepository.remove(bill)
                 _deleted.value = true
                 load()
@@ -50,11 +59,11 @@ class AddPurchaseViewModel(application: Application): AndroidViewModel(applicati
         }
     }
 
-    fun updatePurchase(id: Long, name: String, category: String, value: Double){
+    fun updatePurchase(id: Long, name: String, category: String, value: Double) {
         viewModelScope.launch {
             val bill = billRepository.getBillById(id)
 
-            if(bill != null){
+            if (bill != null) {
                 bill.value = value
                 bill.name = name
                 bill.category = category
@@ -73,7 +82,7 @@ class AddPurchaseViewModel(application: Application): AndroidViewModel(applicati
         }
     }
 
-    fun setEmail(email: String){
+    fun setEmail(email: String) {
         emailUser = email
         load()
     }

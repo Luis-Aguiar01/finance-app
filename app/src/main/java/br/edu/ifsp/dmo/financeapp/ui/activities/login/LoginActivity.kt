@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityLoginBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
 import br.edu.ifsp.dmo.financeapp.util.Constants
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
             if (isLoginCorrect) {
                 navigateToLogged()
             } else {
-                Toast.makeText(this, "Erro ao realizar Login!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.login_failed), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -53,21 +54,22 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.loginButton.setOnClickListener{
+        binding.loginButton.setOnClickListener {
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
             val stayLogged = binding.checkboxStayLogged.isChecked
             val saveData = binding.checkboxSaveData.isChecked
 
-            if (email.isBlank() || password.isBlank()){
-                Toast.makeText(this, "Por favor insira todos os valores.", Toast.LENGTH_SHORT).show()
-            }else{
+            if (email.isBlank() || password.isBlank()) {
+                Toast.makeText(this, getString(R.string.error_empty_values), Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 viewModel.login(email, password, stayLogged, saveData)
             }
         }
     }
 
-    private fun navigateToLogged(){
+    private fun navigateToLogged() {
         val resultIntent = Intent(this, MainActivity::class.java)
         resultIntent.putExtra(Constants.USER_EMAIL, binding.inputEmail.text.toString())
         setResult(RESULT_OK, resultIntent)

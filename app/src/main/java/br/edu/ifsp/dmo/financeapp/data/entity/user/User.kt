@@ -20,8 +20,8 @@ class User(
     @ColumnInfo(name = Constants.USER_PASSWORD)
     var password: String,
 
-) {
-    fun authenticate(email: String, password: String): Boolean{
+    ) {
+    fun authenticate(email: String, password: String): Boolean {
         return this.email == email && this.password == password
     }
 }

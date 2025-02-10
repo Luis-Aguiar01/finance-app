@@ -29,7 +29,7 @@ class BillRepository(context: Context) {
         return dao.getAllByEmail(email)
     }
 
-    suspend fun getBillById(id: Long): Bill {
+    suspend fun getBillById(id: Long): Bill? {
         return dao.getBillById(id)
     }
 
@@ -41,7 +41,11 @@ class BillRepository(context: Context) {
         return dao.getSumByCategory(email)
     }
 
-    suspend fun getTotalBillByCategoryAndDate(emailUser: String, initialDate: Long, finalDate: Long): Map<String, Double> {
+    suspend fun getTotalBillByCategoryAndDate(
+        emailUser: String,
+        initialDate: Long,
+        finalDate: Long
+    ): Map<String, Double> {
         return dao.getSumByCategoryAndDate(emailUser, initialDate, finalDate)
     }
 }

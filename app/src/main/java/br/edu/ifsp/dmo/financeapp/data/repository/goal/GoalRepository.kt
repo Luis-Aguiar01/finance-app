@@ -12,7 +12,7 @@ class GoalRepository(context: Context) {
         return dao.create(goal) > 0
     }
 
-    suspend fun updateAccumulated(goal: Goal, value: Double): Boolean{
+    suspend fun updateAccumulated(goal: Goal, value: Double): Boolean {
         return dao.updateAccumulated(goal.id, value) > 0
     }
 
@@ -28,7 +28,7 @@ class GoalRepository(context: Context) {
         return dao.getAllByEmail(email)
     }
 
-    suspend fun getGoalById(id: Long): Goal {
+    suspend fun getGoalById(id: Long): Goal? {
         return dao.getGoalById(id)
     }
 }

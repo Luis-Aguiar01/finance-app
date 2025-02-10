@@ -3,8 +3,6 @@ package br.edu.ifsp.dmo.financeapp.ui.activities.profile
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
@@ -31,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun configListeners() {
-        binding.arrowBack.setOnClickListener  {
+        binding.arrowBack.setOnClickListener {
             finish()
         }
 
@@ -75,9 +73,9 @@ class ProfileActivity : AppCompatActivity() {
             val resultIntent = Intent(this, MainActivity::class.java)
             resultIntent.putExtra(Constants.USER_EMAIL, viewModel.email.value)
             if (editResult) {
-                setResult(Activity.RESULT_OK ,resultIntent)
+                setResult(Activity.RESULT_OK, resultIntent)
             } else {
-                setResult(Activity.RESULT_CANCELED ,resultIntent)
+                setResult(Activity.RESULT_CANCELED, resultIntent)
             }
             finish()
         })
@@ -85,9 +83,9 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun openBundle() {
         val extras = intent.extras
-        if(extras != null) {
+        if (extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
-            if(email != null) {
+            if (email != null) {
                 viewModel.updateData(email)
             }
         }

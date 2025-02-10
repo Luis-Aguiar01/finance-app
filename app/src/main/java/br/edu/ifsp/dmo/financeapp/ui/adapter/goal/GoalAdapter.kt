@@ -1,6 +1,5 @@
 package br.edu.ifsp.dmo.financeapp.ui.adapter.goal
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,9 @@ import br.edu.ifsp.dmo.financeapp.data.entity.goal.Goal
 import br.edu.ifsp.dmo.financeapp.databinding.ItemGoalListBinding
 import br.edu.ifsp.dmo.financeapp.ui.listeners.goal.GoalItemClickListener
 
-class GoalAdapter(private val listener: GoalItemClickListener):
-    RecyclerView.Adapter<GoalAdapter.ViewHolder>() {
+class GoalAdapter(
+    private val listener: GoalItemClickListener
+) : RecyclerView.Adapter<GoalAdapter.ViewHolder>() {
 
     private var database: List<Goal> = emptyList()
 
@@ -43,10 +43,6 @@ class GoalAdapter(private val listener: GoalItemClickListener):
         return database.size
     }
 
-    fun getDatasetItem(position: Int): Goal {
-        return database[position]
-    }
-
     fun submitDatabase(data: List<Goal>) {
         database = data
         this.notifyDataSetChanged()
@@ -55,5 +51,4 @@ class GoalAdapter(private val listener: GoalItemClickListener):
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding: ItemGoalListBinding = ItemGoalListBinding.bind(view)
     }
-
 }

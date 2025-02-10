@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityInitialBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.login.LoginActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.main.MainActivity
@@ -34,19 +35,33 @@ class InitialActivity : AppCompatActivity() {
     }
 
     private fun configListeners() {
-        binding.loginButton.setOnClickListener { loginResultLauncher.launch(Intent(this, LoginActivity::class.java)) }
+        binding.loginButton.setOnClickListener {
+            loginResultLauncher.launch(
+                Intent(
+                    this,
+                    LoginActivity::class.java
+                )
+            )
+        }
 
-        binding.registerButton.setOnClickListener { registerResultLauncher.launch(Intent(this, RegisterActivity::class.java)) }
+        binding.registerButton.setOnClickListener {
+            registerResultLauncher.launch(
+                Intent(
+                    this,
+                    RegisterActivity::class.java
+                )
+            )
+        }
 
-       viewModel.savedEmail.observe(this, Observer {
-           if (it.isNotBlank()) {
-               val resultIntent = Intent(this, MainActivity::class.java)
-               resultIntent.putExtra(Constants.USER_EMAIL, it)
-               setResult(RESULT_OK, resultIntent)
-               startActivity(resultIntent)
-               finish()
-           }
-       })
+        viewModel.savedEmail.observe(this, Observer {
+            if (it.isNotBlank()) {
+                val resultIntent = Intent(this, MainActivity::class.java)
+                resultIntent.putExtra(Constants.USER_EMAIL, it)
+                setResult(RESULT_OK, resultIntent)
+                startActivity(resultIntent)
+                finish()
+            }
+        })
     }
 
     private fun configResultLauncher() {
@@ -54,7 +69,10 @@ class InitialActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    Toast.makeText(this,"Usuário registrado com Sucesso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.user_registered_successfuly), Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
@@ -67,5 +85,4 @@ class InitialActivity : AppCompatActivity() {
                 }
             }
     }
-
 }

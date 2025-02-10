@@ -10,20 +10,22 @@ import br.edu.ifsp.dmo.financeapp.data.datastore.DataStoreRepository
 import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
-class LoginViewModel(application: Application): AndroidViewModel(application) {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository: UserRepository = UserRepository(application)
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
 
     private val _isLogged = MutableLiveData<Boolean>()
-    val isLogged : LiveData<Boolean> = _isLogged
+    val isLogged: LiveData<Boolean> = _isLogged
 
-    val loginPreferences:  LiveData<Pair<Boolean, Boolean>> = dataStoreRepository.loginPreferences.asLiveData()
-    val dataPreferences: LiveData<Pair<String, String>> = dataStoreRepository.dataPreferences.asLiveData()
+    val loginPreferences: LiveData<Pair<Boolean, Boolean>> =
+        dataStoreRepository.loginPreferences.asLiveData()
+    val dataPreferences: LiveData<Pair<String, String>> =
+        dataStoreRepository.dataPreferences.asLiveData()
 
     fun login(email: String, password: String, stayLogged: Boolean, saveData: Boolean) {
         viewModelScope.launch {
-            val user =  userRepository.findByEmail(email)
+            val user = userRepository.findByEmail(email)
             if (user != null && user.authenticate(email, password)) {
                 if (saveData) {
                     savePreferences(email, password, saveData, stayLogged)
@@ -44,10 +46,14 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    private fun savePreferences(email: String, password: String, saveLogin: Boolean, stayLoggedIn: Boolean) {
+    private fun savePreferences(
+        email: String,
+        password: String,
+        saveLogin: Boolean,
+        stayLoggedIn: Boolean
+    ) {
         viewModelScope.launch {
             dataStoreRepository.savePreferences(email, password, saveLogin, stayLoggedIn)
         }
     }
-
 }

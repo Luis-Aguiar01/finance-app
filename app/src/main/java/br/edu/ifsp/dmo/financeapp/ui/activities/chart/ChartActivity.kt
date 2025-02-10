@@ -50,7 +50,7 @@ class ChartActivity : AppCompatActivity() {
         configListeners()
     }
 
-    private fun configObservers(){
+    private fun configObservers() {
         viewModel.totalByCategory.observe(this, Observer {
             setPieChart(it)
             setBarChart(it)
@@ -68,10 +68,12 @@ class ChartActivity : AppCompatActivity() {
                 .build()
 
             val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
-                .setTitleText("Selecione um intervalo de datas")
+                .setTitleText(getString(R.string.select_range_date))
                 .setSelection(
-                    Pair(MaterialDatePicker.thisMonthInUtcMilliseconds(),
-                        MaterialDatePicker.todayInUtcMilliseconds())
+                    Pair(
+                        MaterialDatePicker.thisMonthInUtcMilliseconds(),
+                        MaterialDatePicker.todayInUtcMilliseconds()
+                    )
                 )
                 .setTheme(R.style.CustomDatePicker)
                 .setCalendarConstraints(constraintDate)
@@ -98,7 +100,8 @@ class ChartActivity : AppCompatActivity() {
                 localCalendar.set(Calendar.MILLISECOND, 999)
                 val endDateMillis = localCalendar.timeInMillis
 
-                val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val simpleDateFormat =
+                    SimpleDateFormat(getString(R.string.date_pattern), Locale.getDefault())
                 val formattedStartDate = simpleDateFormat.format(Date(startDateMillis))
                 val formattedEndDate = simpleDateFormat.format(Date(endDateMillis))
 
@@ -122,6 +125,7 @@ class ChartActivity : AppCompatActivity() {
                         binding.barChart.visibility = View.VISIBLE
                         binding.pieChart.visibility = View.GONE
                     }
+
                     R.id.pie_chart_button -> {
                         binding.barChart.visibility = View.GONE
                         binding.pieChart.visibility = View.VISIBLE
@@ -138,7 +142,7 @@ class ChartActivity : AppCompatActivity() {
             BarEntry(index.toFloat(), value.toFloat())
         }
 
-        val dataSet = BarDataSet(entries, "Gastos por categoria").apply {
+        val dataSet = BarDataSet(entries, getString(R.string.buys_by_category)).apply {
             colors = customColors
             valueTextColor = Color.WHITE
             valueTextSize = 9f
@@ -188,7 +192,7 @@ class ChartActivity : AppCompatActivity() {
             PieEntry(sum.toFloat(), category)
         }
 
-        val dataSet = PieDataSet(entries, "Gastos por Categoria").apply {
+        val dataSet = PieDataSet(entries, getString(R.string.buys_by_category)).apply {
             colors = customColors
             valueTextColor = Color.WHITE
             valueTextSize = 14f
@@ -210,9 +214,9 @@ class ChartActivity : AppCompatActivity() {
         pieChart.invalidate()
     }
 
-    private fun openBundle(){
+    private fun openBundle() {
         val extras = intent.extras
-        if(extras != null) {
+        if (extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
             if (email != null) {
                 viewModel.setEmail(email)

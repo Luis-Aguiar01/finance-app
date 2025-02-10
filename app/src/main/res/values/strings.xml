@@ -84,7 +84,29 @@
     <string name="add_quantity_dialog_goal_title">Adicionar quantia</string>
     <string name="quantity_hint">Quantia</string>
     <string name="quantity_placeholder">Informe a quantia</string>
-    <string name="welcome_message">Bem-vindo, \n%1$s 👋</string>
+    <string name="select_range_date">Selecione um intervalo de datas</string>
+    <string name="date_pattern">dd/MM/yyyy</string>
+    <string name="buys_by_category">Gastos por categoria</string>
+    <string name="goal_added_successfuly">Meta adicionada com sucesso.</string>
+    <string name="goal_deleted_successfuly">Meta deletada com sucesso.</string>
+    <string name="goal_updated_successfuly">Meta atualizada com sucesso.</string>
+    <string name="goal_error_values">A meta final não pode ser menor do que a quantidade inicial.</string>
+    <string name="goal_error_empty_informations">Adicione todas as informações da meta.</string>
+    <string name="empty_quantity_error">Informe a quantidade.</string>
+    <string name="user_registered_successfuly">Usuário registrado com Sucesso</string>
+    <string name="login_failed">Erro ao realizar Login!</string>
+    <string name="error_empty_values">Por favor insira todos os valores.</string>
+    <string name="welcome_message">Bem-vindo,\n%1$s 👋</string>
+    <string name="profile_updated_successfully">Perfil atualizado com sucesso!</string>
+    <string name="email_already_registered_error">Esse email já está em uso.</string>
+    <string name="add_all_product_informations_error">Adicione todas as informações do produto.</string>
+    <string name="bill_added_successfully">Gasto adicionado com sucesso.</string>
+    <string name="bill_deleted_successfuly">Gasto deletado com sucesso.</string>
+    <string name="bill_updated_successfully">Gasto atualizado com sucesso.</string>
+    <string name="fil_out_all_fields_error">Preencha todos os campos.</string>
+    <string name="register_error">Não foi possível realizar o cadastro...</string>
+    <string name="fill_out_all_fields_error">Preencha todos os campos...</string>
+
 
     <string-array name="categories">
         <item>Eletrônicos</item>

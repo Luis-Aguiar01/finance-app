@@ -9,8 +9,9 @@ import br.edu.ifsp.dmo.financeapp.data.entity.bill.Bill
 import br.edu.ifsp.dmo.financeapp.databinding.ItemFixedBillListBinding
 import br.edu.ifsp.dmo.financeapp.ui.listeners.bill.BillItemClickListener
 
-class BillAdapter(private val listener: BillItemClickListener) :
-    RecyclerView.Adapter<BillAdapter.ViewHolder>() {
+class BillAdapter(
+    private val listener: BillItemClickListener
+) : RecyclerView.Adapter<BillAdapter.ViewHolder>() {
 
     private var database: List<Bill> = emptyList()
 

@@ -10,27 +10,27 @@ import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val userRepository = UserRepository(application)
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
 
     private val _isDisconnected = MutableLiveData<Boolean>()
-    val isDisconnected : LiveData<Boolean> = _isDisconnected
+    val isDisconnected: LiveData<Boolean> = _isDisconnected
 
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user;
 
     private var emailUser: String = ""
 
-    fun logout(){
-        viewModelScope.launch{
+    fun logout() {
+        viewModelScope.launch {
             dataStoreRepository.savePreferencesLogout()
             dataStoreRepository.saveEmailStayLogged("")
             _isDisconnected.value = true
         }
     }
 
-    fun setEmail(email: String){
+    fun setEmail(email: String) {
         emailUser = email
         viewModelScope.launch {
             _user.value = userRepository.findByEmail(emailUser)

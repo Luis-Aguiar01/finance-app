@@ -1,7 +1,6 @@
 package br.edu.ifsp.dmo.financeapp.ui.adapter.historical
 
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class HistoricalAdapter(): RecyclerView.Adapter<HistoricalAdapter.ViewHolder>() {
+class HistoricalAdapter() : RecyclerView.Adapter<HistoricalAdapter.ViewHolder>() {
 
     private var database: List<Bill> = emptyList()
 
@@ -31,7 +30,7 @@ class HistoricalAdapter(): RecyclerView.Adapter<HistoricalAdapter.ViewHolder>() 
         val bill = database[position]
 
         holder.binding.descriptionItem.text = bill.name
-        holder.binding.productValue.text = "R$:${bill.value}"
+        holder.binding.productValue.text = "R$: ${bill.value}"
 
         val dateMillis = bill.date;
         val date = Instant.ofEpochMilli(dateMillis)
