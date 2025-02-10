@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityMainBinding
 import br.edu.ifsp.dmo.financeapp.ui.activities.chart.ChartActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.goals.GoalsActivity
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.user.observe(this, Observer {
             if (it != null) {
-                binding.viewTitle.text = "Bem-vindo, \n${it.name} 👋"
+                binding.viewTitle.text = getString(R.string.welcome_message, it.name)
             }
         })
     }
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             redirect(profileIntent)
         }
 
-        binding.checkExpensesCard.setOnClickListener{
+        binding.checkExpensesCard.setOnClickListener {
             val chartIntent = Intent(this, ChartActivity::class.java)
             redirect(chartIntent)
         }

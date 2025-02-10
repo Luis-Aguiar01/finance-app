@@ -84,6 +84,7 @@
     <string name="add_quantity_dialog_goal_title">Adicionar quantia</string>
     <string name="quantity_hint">Quantia</string>
     <string name="quantity_placeholder">Informe a quantia</string>
+    <string name="welcome_message">Bem-vindo, \n%1$s 👋</string>
 
     <string-array name="categories">
         <item>Eletrônicos</item>
