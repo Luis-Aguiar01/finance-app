@@ -1,8 +1,10 @@
 package br.edu.ifsp.dmo.financeapp.data.repository.bill
 
 import android.content.Context
+import android.util.Log
 import br.edu.ifsp.dmo.financeapp.data.database.FinanceDatabase
 import br.edu.ifsp.dmo.financeapp.data.entity.bill.Bill
+import java.util.Date
 
 class BillRepository(context: Context) {
 
@@ -33,4 +35,16 @@ class BillRepository(context: Context) {
         return dao.getBillById(id)
     }
 
+    suspend fun getBillByDate(initialDate: Long, finalDate: Long, email: String): List<Bill>{
+
+        var lista = dao.getBillByDate(initialDate, finalDate, email)
+
+        Log.e("Repository", lista.toString())
+        Log.e("Initial", initialDate.toString())
+        Log.e("Final", finalDate.toString())
+
+        Log.e("Email", email)
+
+        return lista
+    }
 }

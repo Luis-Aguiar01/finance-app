@@ -53,7 +53,6 @@ class AddPurchaseActivity : AppCompatActivity(), BillItemClickListener {
                 val category = dialogBinding.inputCategory.text.toString()
 
                 if (product.isNotEmpty() && price.isNotEmpty() && category.isNotEmpty()) {
-                    val dPrice = price.toDouble()
                     viewModel.insertPurchase(product, price.toDouble(), category)
                     dialog.dismiss()
                 } else {

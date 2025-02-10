@@ -28,4 +28,6 @@ interface BillDao {
     @Delete
     suspend fun delete(bill: Bill): Int
 
-}
+    @Query("SELECT * FROM tb_bills WHERE email = :email AND bill_date BETWEEN :initialDate AND :finalDate" )
+    suspend fun getBillByDate(initialDate: Long, finalDate: Long, email: String) : List<Bill>
+ }

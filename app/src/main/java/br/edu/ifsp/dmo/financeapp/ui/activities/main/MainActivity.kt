@@ -62,7 +62,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.historicalCard.setOnClickListener {
-            startActivity(Intent(this, HistoricalActivity::class.java))
+            val historicalIntent = Intent(this, HistoricalActivity::class.java)
+            historicalIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(historicalIntent)
         }
 
         binding.profileCard.setOnClickListener {
