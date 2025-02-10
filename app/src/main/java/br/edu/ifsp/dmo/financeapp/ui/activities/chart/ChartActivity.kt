@@ -12,6 +12,8 @@ import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityChartBinding
 import br.edu.ifsp.dmo.financeapp.util.Constants
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -22,6 +24,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -33,6 +36,14 @@ class ChartActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChartBinding
     private lateinit var viewModel: ChartViewModel
+    private val customColors = listOf(
+        Color.rgb(255, 99, 132),
+        Color.rgb(54, 162, 235),
+        Color.rgb(75, 192, 192),
+        Color.rgb(255, 206, 86),
+        Color.rgb(153, 102, 255),
+        Color.rgb(255, 159, 64),
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,58 +123,45 @@ class ChartActivity : AppCompatActivity() {
             BarEntry(index.toFloat(), value.toFloat())
         }
 
-        val customColors = listOf(
-            Color.rgb(255, 99, 132),  // Vermelho suave
-            Color.rgb(54, 162, 235),   // Azul claro
-            Color.rgb(75, 192, 192),   // Turquesa
-            Color.rgb(255, 206, 86),   // Amarelo dourado
-            Color.rgb(153, 102, 255),  // Roxo suave
-            Color.rgb(255, 159, 64),   // Laranja suave
-            Color.rgb(83, 102, 255),   // Azul escuro
-            Color.rgb(255, 99, 255),   // Rosa
-        )
-
         val dataSet = BarDataSet(entries, "Compras").apply {
             colors = customColors
             valueTextColor = Color.WHITE
-            valueTextSize = 14f
+            valueTextSize = 9f
             setDrawValues(true)
+            valueFormatter = object : ValueFormatter() {
+                override fun getBarLabel(barEntry: BarEntry?): String {
+                    val index = barEntry?.x?.toInt() ?: 0
+                    return map.keys.elementAtOrNull(index) ?: ""
+                }
+            }
         }
 
         val data = BarData(dataSet)
         barChart.data = data
 
-        // Adiciona as categorias no eixo X
-        barChart.xAxis.valueFormatter = IndexAxisValueFormatter(map.keys.toList())
         barChart.setBackgroundColor(Color.TRANSPARENT)
-        barChart.xAxis.textColor = Color.WHITE
         barChart.axisLeft.textColor = Color.WHITE
         barChart.axisRight.textColor = Color.WHITE
+        barChart.description.isEnabled = false
 
         barChart.legend.apply {
+            isEnabled = true
             textColor = Color.WHITE
             verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
             horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
             orientation = Legend.LegendOrientation.HORIZONTAL
-            yOffset = 20f
-            xEntrySpace = 10f
-            yEntrySpace = 5f
-            textSize = 12f
-            maxSizePercent = 0.9f
         }
 
         barChart.xAxis.setDrawGridLines(false)
         barChart.axisLeft.setDrawGridLines(false)
         barChart.axisRight.setDrawGridLines(false)
+        barChart.xAxis.textColor = Color.WHITE
+        barChart.xAxis.setDrawLabels(false)
+        barChart.axisLeft.axisMinimum = 0f
+        barChart.axisRight.axisMinimum = 0f
 
-        barChart.description.apply {
-            text = "Gráfico de Vendas por Categoria"
-            textColor = Color.WHITE
-            textSize = 14f
-            setPosition(0f, 0f)
-        }
-
-        barChart.setExtraOffsets(0f, 0f, 0f, 30f)
+        barChart.setDrawValueAboveBar(true)
+        barChart.setExtraOffsets(0f, 0f, 0f, 10f)
 
         barChart.invalidate()
     }
@@ -175,21 +173,6 @@ class ChartActivity : AppCompatActivity() {
             PieEntry(sum.toFloat(), category)
         }
 
-        val customColors = listOf(
-            Color.rgb(255, 99, 132),  // Vermelho suave
-            Color.rgb(54, 162, 235),   // Azul claro
-            Color.rgb(75, 192, 192),   // Turquesa
-            Color.rgb(255, 206, 86),   // Amarelo dourado
-            Color.rgb(153, 102, 255),  // Roxo suave
-            Color.rgb(255, 159, 64),   // Laranja suave
-            Color.rgb(83, 102, 255),   // Azul escuro
-            Color.rgb(255, 99, 255),   // Rosa
-            Color.rgb(99, 255, 132),   // Verde claro
-            Color.rgb(255, 99, 71),    // Vermelho coral
-            Color.rgb(199, 199, 199),  // Cinza claro
-            Color.rgb(255, 182, 193)   // Rosa claro
-        )
-
         val dataSet = PieDataSet(entries, "Gastos por Categoria").apply {
             colors = customColors
             valueTextColor = Color.WHITE
@@ -199,8 +182,8 @@ class ChartActivity : AppCompatActivity() {
         val data = PieData(dataSet)
         pieChart.data = data
 
-        pieChart.setHoleColor(Color.TRANSPARENT) // 🔴 Deixa o centro do gráfico transparente
-        pieChart.isDrawHoleEnabled = true // Ativa o buraco no centro
+        pieChart.setHoleColor(Color.TRANSPARENT)
+        pieChart.isDrawHoleEnabled = true
         pieChart.holeRadius = 50f
 
         pieChart.legend.isEnabled = false
