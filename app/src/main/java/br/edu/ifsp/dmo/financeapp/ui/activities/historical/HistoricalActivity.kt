@@ -57,7 +57,6 @@ class HistoricalActivity : AppCompatActivity() {
         if(extras != null) {
             val email = extras.getString(Constants.USER_EMAIL)
             if(email != null) {
-                Toast.makeText(this, "Email: ${email}", Toast.LENGTH_SHORT).show()
                 viewModel.setEmail(email)
             }
         }

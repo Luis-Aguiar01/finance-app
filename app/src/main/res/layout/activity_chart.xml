@@ -48,37 +48,24 @@
         app:layout_constraintGuide_percent="0.23" />
 
     <TextView
-        android:id="@+id/sub_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pickup_a_date_subtitle"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
-
-    <TextView
         android:id="@+id/current_range_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="01/01/2025 - 02/07/2025"
+        android:visibility="gone"
         android:textColor="@color/green"
         android:layout_marginTop="12dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_title" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7"/>
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:checkedButton="@id/bar_chart_button"
+        app:checkedButton="@id/pie_chart_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_range_date"
@@ -118,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:backgroundTint="@color/green"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/pickup_date_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,9 +114,9 @@
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pie_chart"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/pickup_date_button"
         app:layout_constraintEnd_toEndOf="parent"

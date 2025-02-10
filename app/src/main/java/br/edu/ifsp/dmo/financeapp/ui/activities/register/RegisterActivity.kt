@@ -44,10 +44,9 @@ class RegisterActivity : AppCompatActivity() {
             val email =  binding.inputEmail.text.toString()
             val name =  binding.inputName.text.toString()
             val password =  binding.inputPassword.text.toString()
-            val salary =  binding.inputSalary.text.toString()
 
-            if (email.isNotBlank() && name.isNotBlank() && password.isNotBlank() && salary.isNotBlank()){
-                viewModel.insertUser(name, email, password, salary.toDouble())
+            if (email.isNotBlank() && name.isNotBlank() && password.isNotBlank()){
+                viewModel.insertUser(name, email, password)
             } else {
                 Toast.makeText(this, "Preencha todos os campos...", Toast.LENGTH_SHORT).show()
             }

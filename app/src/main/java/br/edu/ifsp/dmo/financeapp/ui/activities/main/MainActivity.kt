@@ -73,6 +73,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(profileIntent)
         }
 
+        binding.checkExpensesCard.setOnClickListener{
+            val chartIntent = Intent(this, ChartActivity::class.java)
+            chartIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
+            startActivity(chartIntent)
+        }
+
         binding.logout.setOnClickListener {
             viewModel.logout()
         }

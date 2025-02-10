@@ -6,8 +6,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.dmo.financeapp.R
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityChartBinding
+import br.edu.ifsp.dmo.financeapp.util.Constants
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -27,14 +31,26 @@ import java.util.Locale
 class ChartActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChartBinding
+    private lateinit var viewModel: ChartViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        configCharts()
+        viewModel = ViewModelProvider(this).get(ChartViewModel::class.java)
+
+        openBundle()
+        configObservers()
         configListeners()
+    }
+
+    private fun configObservers(){
+        viewModel.totalByCategory.observe(this, Observer {
+            setPieChart(it)
+            setLineChart(it)
+            setBarChart(it)
+        })
     }
 
     private fun configListeners() {
@@ -96,26 +112,18 @@ class ChartActivity : AppCompatActivity() {
         }
     }
 
-    private fun configCharts() {
-        setBarChart()
-        setPieChart()
-        setLineChart()
-    }
-
-    private fun setBarChart() {
+    private fun setBarChart(map: Map<String, Double>) {
         val barChart = binding.barChart
 
-        val entries = listOf(
-            BarEntry(0f, 5f),
-            BarEntry(1f, 10f),
-            BarEntry(2f, 15f),
-            BarEntry(3f, 8f)
-        )
+        // Converter o Map<String, Double> para uma lista de BarEntry (X = índice, Y = valor)
+        val entries = map.values.mapIndexed { index, value ->
+            BarEntry(index.toFloat(), value.toFloat())
+        }
 
         val dataSet = BarDataSet(entries, "Vendas").apply {
-            setColors(*ColorTemplate.MATERIAL_COLORS)
-            valueTextColor = Color.WHITE
-            valueTextSize = 14f
+            setColors(*ColorTemplate.MATERIAL_COLORS) // Define cores para as barras
+            valueTextColor = Color.WHITE // Cor do texto dos valores
+            valueTextSize = 14f // Tamanho do texto dos valores
         }
 
         val data = BarData(dataSet)
@@ -133,18 +141,27 @@ class ChartActivity : AppCompatActivity() {
         barChart.invalidate()
     }
 
-    private fun setPieChart() {
+    private fun setPieChart(map: Map<String, Double>) {
         val pieChart = binding.pieChart
 
-        val entries = listOf(
-            PieEntry(0f, 5f),
-            PieEntry(1f, 10f),
-            PieEntry(2f, 15f),
-            PieEntry(3f, 8f)
+        // Converter o Map<String, Double> em uma lista de PieEntry
+        val entries = map.map { (category, sum) ->
+            PieEntry(sum.toFloat(), category) // Converte Double para Float e usa a categoria como rótulo
+        }
+
+        val customColors = listOf(
+            Color.rgb(255, 0, 0), // Vermelho
+            Color.rgb(54, 162, 235),  // Azul
+            Color.rgb(75, 192, 192),  // Verde
+            Color.rgb(153, 102, 255), // Roxo
+            Color.rgb(255, 159, 64),  // Laranja
+            Color.rgb(83, 102, 255),  // Azul escuro
+            Color.rgb(255, 99, 255)   // Rosa
         )
 
-        val dataSet = PieDataSet(entries, "Vendas").apply {
-            setColors(*ColorTemplate.MATERIAL_COLORS)
+        // Criar o PieDataSet
+        val dataSet = PieDataSet(entries, "Gastos por Categoria").apply {
+            colors = customColors // Usar a lista de cores personalizadas
             valueTextColor = Color.WHITE
             valueTextSize = 14f
         }
@@ -152,24 +169,37 @@ class ChartActivity : AppCompatActivity() {
         val data = PieData(dataSet)
         pieChart.data = data
 
+        // Configurar a legenda
+        val legend = pieChart.legend
+        legend.textColor = Color.WHITE
+        legend.textSize = 10f // Tamanho reduzido do texto
+        legend.orientation = Legend.LegendOrientation.VERTICAL
+        legend.setDrawInside(false)
+
+        // Configurações adicionais do PieChart
         pieChart.setBackgroundColor(Color.TRANSPARENT)
+        pieChart.description.isEnabled = false
+        pieChart.setEntryLabelColor(Color.WHITE)
+        pieChart.setEntryLabelTextSize(12f)
+
+        // Atualizar o gráfico
         pieChart.invalidate()
     }
 
-    private fun setLineChart() {
+    private fun setLineChart(map: Map<String, Double>) {
         val lineChart = binding.lineChart
 
-        val entries = listOf(
-            Entry(0f, 5f),
-            Entry(1f, 10f),
-            Entry(2f, 15f),
-            Entry(3f, 8f)
-        )
+        val entries = map.values.mapIndexed { index, value ->
+            Entry(index.toFloat(), value.toFloat())
+        }
 
         val dataSet = LineDataSet(entries, "Vendas").apply {
-            setColors(*ColorTemplate.MATERIAL_COLORS)
-            valueTextColor = Color.WHITE
-            valueTextSize = 14f
+            setColors(*ColorTemplate.MATERIAL_COLORS) // Define cores para as linhas
+            valueTextColor = Color.WHITE // Cor do texto dos valores
+            valueTextSize = 14f // Tamanho do texto dos valores
+            setCircleColor(Color.WHITE) // Cor dos pontos
+            setDrawCircleHole(false) // Remover buracos nos pontos
+            setDrawValues(true) // Exibir valores nos pontos
         }
 
         val data = LineData(dataSet)
@@ -185,5 +215,15 @@ class ChartActivity : AppCompatActivity() {
         lineChart.axisRight.setDrawGridLines(false)
 
         lineChart.invalidate()
+    }
+
+    private fun openBundle(){
+        val extras = intent.extras
+        if(extras != null) {
+            val email = extras.getString(Constants.USER_EMAIL)
+            if(email != null) {
+                viewModel.setEmail(email)
+            }
+        }
     }
 }

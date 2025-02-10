@@ -3,9 +3,11 @@ package br.edu.ifsp.dmo.financeapp.data.dao.bill
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.MapInfo
 import androidx.room.Query
 import androidx.room.Update
 import br.edu.ifsp.dmo.financeapp.data.entity.bill.Bill
+import br.edu.ifsp.dmo.financeapp.util.Constants
 
 @Dao
 interface BillDao {
@@ -30,4 +32,9 @@ interface BillDao {
 
     @Query("SELECT * FROM tb_bills WHERE email = :email AND bill_date BETWEEN :initialDate AND :finalDate" )
     suspend fun getBillByDate(initialDate: Long, finalDate: Long, email: String) : List<Bill>
+
+    @MapInfo(keyColumn = Constants.BILL_CATEGORY, valueColumn = Constants.BILL_TOTAL_BY_CATEGORY)
+    @Query("SELECT category, SUM(value) as total FROM tb_bills WHERE email = :email GROUP BY category ORDER BY total DESC LIMIT 7")
+    suspend fun getSumByCategory(email: String): Map<String, Double>
+
  }

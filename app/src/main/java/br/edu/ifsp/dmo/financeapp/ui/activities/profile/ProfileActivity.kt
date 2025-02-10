@@ -46,10 +46,6 @@ class ProfileActivity : AppCompatActivity() {
         binding.inputPassword.addTextChangedListener { password ->
             viewModel.setPassword(password.toString())
         }
-
-        binding.inputSalary.addTextChangedListener { salary ->
-            viewModel.setSalary(salary.toString().toDouble())
-        }
     }
 
     private fun configObservers() {
@@ -68,15 +64,6 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.password.observe(this, Observer { password ->
             if (binding.inputPassword.text.toString() != password) {
                 binding.inputPassword.setText(password)
-            }
-        })
-
-        viewModel.salary.observe(this, Observer { salary ->
-            val currentText = binding.inputSalary.text.toString()
-            val currentSalary = currentText.toDoubleOrNull()
-
-            if (currentSalary == null || currentSalary != salary) {
-                binding.inputSalary.setText(salary.toString())
             }
         })
     }

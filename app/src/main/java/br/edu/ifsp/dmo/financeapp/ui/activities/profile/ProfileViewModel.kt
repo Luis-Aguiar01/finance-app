@@ -24,9 +24,6 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
     private val _password = MutableLiveData<String>()
     val password: LiveData<String> = _password
 
-    private val _salary = MutableLiveData<Double>()
-    val salary: LiveData<Double> = _salary
-
     private var oldEmail = ""
 
     fun updateData(email: String) {
@@ -37,7 +34,6 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
                     _name.value = user.name
                     _email.value = user.email
                     _password.value = user.password
-                    _salary.value = user.salary
                     oldEmail = user.email
                 }
             }
@@ -52,7 +48,7 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
                     return@launch
                 }
             }
-            val user = User(_email.value!!, _name.value!!, _password.value!!, _salary.value!!)
+            val user = User(_email.value!!, _name.value!!, _password.value!!)
             userRepository.update(user)
             updateData(_email.value!!)
         }
@@ -66,8 +62,5 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
     }
     fun setPassword(password: String) {
         _password.value = password
-    }
-    fun setSalary(salary: Double) {
-        _salary.value = salary
     }
 }

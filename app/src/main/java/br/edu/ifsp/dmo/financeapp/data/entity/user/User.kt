@@ -20,10 +20,6 @@ class User(
     @ColumnInfo(name = Constants.USER_PASSWORD)
     var password: String,
 
-    @NonNull
-    @ColumnInfo(name = Constants.USER_SALARY)
-    var salary: Double
-
 ) {
     fun authenticate(email: String, password: String): Boolean{
         return this.email == email && this.password == password

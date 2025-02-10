@@ -109,7 +109,7 @@
         app:boxStrokeColor="@color/color_input_text"
         app:boxStrokeWidth="2dp"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/text_input_container4"
+        app:layout_constraintBottom_toTopOf="@id/register_button"
         app:layout_constraintEnd_toEndOf="@+id/text_input_container2"
         app:layout_constraintStart_toStartOf="@+id/text_input_container2"
         app:layout_constraintTop_toBottomOf="@+id/text_input_container2"
@@ -127,32 +127,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_container4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/salary_input_hint"
-        android:padding="8dp"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/color_input_text"
-        app:boxStrokeWidth="2dp"
-        app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_container3"
-        app:placeholderText="@string/salary_input_placeholder"
-        tools:layout_editor_absoluteX="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_salary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:padding="20dp"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
@@ -166,7 +140,7 @@
         android:textStyle="bold"
         app:cornerRadius="10dp"
         app:iconGravity="textStart"
-        app:layout_constraintTop_toBottomOf="@id/text_input_container4"
+        app:layout_constraintTop_toBottomOf="@id/text_input_container3"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/text_input_container3"
         app:layout_constraintStart_toStartOf="@+id/text_input_container3" />

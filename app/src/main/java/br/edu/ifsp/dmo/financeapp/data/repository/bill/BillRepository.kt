@@ -39,12 +39,13 @@ class BillRepository(context: Context) {
 
         var lista = dao.getBillByDate(initialDate, finalDate, email)
 
-        Log.e("Repository", lista.toString())
-        Log.e("Initial", initialDate.toString())
-        Log.e("Final", finalDate.toString())
-
-        Log.e("Email", email)
-
         return lista
+    }
+
+    suspend fun getTotalBillByCategory(email: String): Map<String, Double>{
+
+        var map = dao.getSumByCategory(email)
+
+        return map
     }
 }
