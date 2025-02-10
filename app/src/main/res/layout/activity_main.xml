@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_app"
-    android:padding="10dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/view_title"
@@ -23,7 +23,7 @@
 
     <GridLayout
         android:id="@+id/grid_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:columnCount="2"
