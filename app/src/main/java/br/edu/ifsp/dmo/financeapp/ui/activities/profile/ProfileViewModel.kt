@@ -57,9 +57,11 @@ class ProfileViewModel(application: Application): AndroidViewModel(application) 
     fun setName(name: String) {
         _name.value = name
     }
+
     fun setEmail(email: String) {
         _email.value = email
     }
+
     fun setPassword(password: String) {
         _password.value = password
     }

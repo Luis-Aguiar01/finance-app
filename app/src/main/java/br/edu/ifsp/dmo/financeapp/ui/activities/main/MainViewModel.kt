@@ -6,13 +6,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.edu.ifsp.dmo.financeapp.data.datastore.DataStoreRepository
+import br.edu.ifsp.dmo.financeapp.data.entity.user.User
+import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
+    private val userRepository = UserRepository(application)
     private val dataStoreRepository: DataStoreRepository = DataStoreRepository(application)
     private val _isDisconnected = MutableLiveData<Boolean>()
     val isDisconnected : LiveData<Boolean> = _isDisconnected
+
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User> = _user;
+
+    private var emailUser: String = ""
 
     fun logout(){
         viewModelScope.launch{
@@ -20,5 +28,16 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
             dataStoreRepository.saveEmailStayLogged("")
             _isDisconnected.value = true
         }
+    }
+
+    fun setEmail(email: String){
+        emailUser = email
+        viewModelScope.launch {
+            _user.value = userRepository.findByEmail(emailUser)
+        }
+    }
+
+    fun getEmail(): String {
+        return emailUser
     }
 }

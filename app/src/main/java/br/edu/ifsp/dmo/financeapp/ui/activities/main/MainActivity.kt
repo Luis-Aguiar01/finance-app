@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.dmo.financeapp.databinding.ActivityMainBinding
-import br.edu.ifsp.dmo.financeapp.ui.activities.bills.FixedBillsActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.chart.ChartActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.goals.GoalsActivity
 import br.edu.ifsp.dmo.financeapp.ui.activities.historical.HistoricalActivity
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        openBundle()
         setCardClick()
         configObserver()
     }
@@ -38,49 +38,57 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         })
+
+        viewModel.user.observe(this, Observer {
+            if (it != null) {
+                binding.viewTitle.text = "Bem-vindo, \n${it.name} 👋"
+            }
+        })
     }
 
     private fun setCardClick() {
         binding.buyCard.setOnClickListener {
             val buyIntent = Intent(this, AddPurchaseActivity::class.java)
-            buyIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(buyIntent)
-        }
-
-        binding.checkExpensesCard.setOnClickListener {
-            startActivity(Intent(this, ChartActivity::class.java))
+            redirect(buyIntent)
         }
 
         binding.financialGoalsCard.setOnClickListener {
             val financialIntent = Intent(this, GoalsActivity::class.java)
-            financialIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(financialIntent)
-        }
-
-        binding.fixedBillsCard.setOnClickListener {
-            startActivity(Intent(this, FixedBillsActivity::class.java))
+            redirect(financialIntent)
         }
 
         binding.historicalCard.setOnClickListener {
             val historicalIntent = Intent(this, HistoricalActivity::class.java)
-            historicalIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(historicalIntent)
+            redirect(historicalIntent)
         }
 
         binding.profileCard.setOnClickListener {
             val profileIntent = Intent(this, ProfileActivity::class.java)
-            profileIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(profileIntent)
+            redirect(profileIntent)
         }
 
         binding.checkExpensesCard.setOnClickListener{
             val chartIntent = Intent(this, ChartActivity::class.java)
-            chartIntent.putExtra(Constants.USER_EMAIL, (intent.extras)?.getString(Constants.USER_EMAIL))
-            startActivity(chartIntent)
+            redirect(chartIntent)
         }
 
         binding.logout.setOnClickListener {
             viewModel.logout()
         }
+    }
+
+    private fun openBundle() {
+        val extras = intent.extras
+        if(extras != null) {
+            val email = extras.getString(Constants.USER_EMAIL)
+            if(email != null) {
+                viewModel.setEmail(email)
+            }
+        }
+    }
+
+    private fun redirect(intent: Intent) {
+        intent.putExtra(Constants.USER_EMAIL, viewModel.getEmail())
+        startActivity(intent)
     }
 }

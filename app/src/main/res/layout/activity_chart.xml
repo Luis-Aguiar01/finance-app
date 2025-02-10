@@ -89,15 +89,6 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/line_chart_button"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/line_chart"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <com.github.mikephil.charting.charts.BarChart
@@ -117,18 +108,6 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:visibility="visible"
-        android:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/pickup_date_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
-
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/line_chart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:visibility="gone"
-        android:layout_margin="16dp"
         android:backgroundTint="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/pickup_date_button"
         app:layout_constraintEnd_toEndOf="parent"
