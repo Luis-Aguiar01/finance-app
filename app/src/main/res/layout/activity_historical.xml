@@ -34,12 +34,11 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
         android:text="@string/historical_title"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toEndOf="@+id/icon"
         app:layout_constraintStart_toStartOf="@+id/icon"
         app:layout_constraintTop_toBottomOf="@+id/icon" />
@@ -64,6 +63,7 @@
         android:text="01/01/2025 - 02/07/2025"
         android:textColor="@color/green"
         android:layout_marginTop="12dp"
+        android:visibility="gone"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@id/pickup_date_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/pickup_date_button"

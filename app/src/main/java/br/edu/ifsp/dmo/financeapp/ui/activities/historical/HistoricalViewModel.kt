@@ -21,18 +21,19 @@ class HistoricalViewModel(application: Application): AndroidViewModel(applicatio
     private var emailUser: String = ""
 
     fun getBillByDate( initialDate: Long, finalDate: Long){
-
         viewModelScope.launch {
            _bills.value =  billRepository.getBillByDate(initialDate, finalDate, emailUser)
         }
-
-        Log.d("Teste: ", _bills.value.toString())
-
     }
 
     fun setEmail(email: String){
         emailUser = email
+        load()
     }
 
-
+    private fun load() {
+        viewModelScope.launch {
+            _bills.value = billRepository.getAllByEmail(emailUser)
+        }
+    }
 }

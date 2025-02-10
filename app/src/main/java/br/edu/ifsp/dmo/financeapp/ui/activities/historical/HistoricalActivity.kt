@@ -1,6 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.ui.activities.historical
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.Pair
@@ -16,7 +17,9 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.sql.Date
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
+import java.util.TimeZone
 
 class HistoricalActivity : AppCompatActivity() {
 
@@ -28,8 +31,8 @@ class HistoricalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoricalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = ViewModelProvider(this).get(HistoricalViewModel::class.java)
 
+        viewModel = ViewModelProvider(this).get(HistoricalViewModel::class.java)
 
         openBundle()
         configObservers()
@@ -64,6 +67,7 @@ class HistoricalActivity : AppCompatActivity() {
         binding.arrowBack.setOnClickListener {
             finish()
         }
+
         binding.pickupDateButton.setOnClickListener {
             val constraintDate = CalendarConstraints.Builder()
                 .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
@@ -82,20 +86,34 @@ class HistoricalActivity : AppCompatActivity() {
                 .build()
 
             dateRangePicker.addOnPositiveButtonClickListener { selection ->
-                // Obtém as datas selecionadas em milissegundos
-                val startDateMillis = selection.first
-                val endDateMillis = selection.second
+                val oneDayMillis = 24 * 60 * 60 * 1000 // 1 dia em milissegundos
+                val timeZone = TimeZone.getDefault()
 
+                val localCalendar = Calendar.getInstance(timeZone)
 
+                localCalendar.timeInMillis = selection.first + oneDayMillis
+                localCalendar.set(Calendar.HOUR_OF_DAY, 0)
+                localCalendar.set(Calendar.MINUTE, 0)
+                localCalendar.set(Calendar.SECOND, 0)
+                localCalendar.set(Calendar.MILLISECOND, 0)
+                val startDateMillis = localCalendar.timeInMillis
 
-                // Exibe as datas selecionadas em um Toast
+                localCalendar.timeInMillis = selection.second + oneDayMillis
+                localCalendar.set(Calendar.HOUR_OF_DAY, 23)
+                localCalendar.set(Calendar.MINUTE, 59)
+                localCalendar.set(Calendar.SECOND, 59)
+                localCalendar.set(Calendar.MILLISECOND, 999)
+                val endDateMillis = localCalendar.timeInMillis
 
-                Toast.makeText(this, "Start Date: ${startDateMillis}", Toast.LENGTH_LONG).show()
-                Toast.makeText(this, "Final Date: ${endDateMillis}", Toast.LENGTH_LONG).show()
-                // Passa as datas em milissegundos para o ViewModel
-                viewModel.getBillByDate(startDateMillis, endDateMillis + 86399000)
+                val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val formattedStartDate = simpleDateFormat.format(Date(startDateMillis))
+                val formattedEndDate = simpleDateFormat.format(Date(endDateMillis))
+
+                binding.currentRangeDate.text = "$formattedStartDate - $formattedEndDate"
+                binding.currentRangeDate.visibility = View.VISIBLE
+
+                viewModel.getBillByDate(startDateMillis, endDateMillis)
             }
-
 
             dateRangePicker.addOnNegativeButtonClickListener {
                 dateRangePicker.dismiss()
