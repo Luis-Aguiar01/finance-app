@@ -9,20 +9,36 @@ O **Finance Up** é um aplicativo desenvolvido para ajudar os usuários a acompa
 ### 🔹 Registro e Cadastro de Usuário  
 Permite que novos usuários se cadastrem e façam login no aplicativo.
 
+![Registro](app/src/main/assets/screenshots/Registro.png)  
+![Login](app/src/main/assets/screenshots/Login.png)
+
 ### 🔹 Registro, Edição e Remoção de Compras  
 Os usuários podem registrar suas compras, editá-las ou removê-las caso necessário.
+
+![Adicionar Compra](app/src/main/assets/screenshots/Adicionar%20Compra.png)  
+![Dialog Compras](app/src/main/assets/screenshots/DialogCompras.png)
 
 ### 🔹 Criação e Exclusão de Metas Financeiras  
 Possibilidade de definir metas financeiras, como juntar R$4000 ou economizar para uma viagem.
 
+![Metas](app/src/main/assets/screenshots/Metas.png)  
+![Dialog Meta](app/src/main/assets/screenshots/DialogMeta.png)
+
 ### 🔹 Atualização de Dados do Perfil  
 Usuários podem modificar informações do perfil diretamente pelo aplicativo.
+
+![Alterar Dados](app/src/main/assets/screenshots/AlterarDados.png)
 
 ### 🔹 Visualização de Gastos em Gráficos  
 Os gastos são apresentados em gráficos de barra e pizza, agrupados por categorias, com opção de filtro por datas.
 
-### 🔹 Histórico de Compras e Logout  
-Permite visualizar o histórico de transações e sair do aplicativo com segurança.
+![Gráfico de Barra](app/src/main/assets/screenshots/Grafico_barra.png)  
+![Gráfico de Pizza](app/src/main/assets/screenshots/Grafico_pizza.png)
+
+### 🔹 Histórico de Compras
+Permite visualizar o histórico de transações por data.
+
+![Histórico de Compras](app/src/main/assets/screenshots/DatasHistorico.png)
 
 ---
 
@@ -43,7 +59,7 @@ Para utilizar o **Finance Up**, siga os passos abaixo:
 ## 1️⃣ Download do APK  
 Baixe o APK diretamente no link abaixo:
 
-🔗 **[[Download do APK](https://drive.google.com/file/d/1xdbKkavL9T0k8ho3PvVUQbV8zcwDtrS5/view?usp=sharing)](#)**
+🔗 **[Download do APK](https://drive.google.com/file/d/1xdbKkavL9T0k8ho3PvVUQbV8zcwDtrS5/view?usp=sharing)**
 
 ## 2️⃣ Instalação no Android  
 1. No seu dispositivo, abra **Configurações > Segurança** e ative a opção **Fontes desconhecidas** (caso o Android solicite permissão para instalar aplicativos externos).
