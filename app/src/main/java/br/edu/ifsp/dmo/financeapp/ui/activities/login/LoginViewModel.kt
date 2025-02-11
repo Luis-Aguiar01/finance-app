@@ -20,6 +20,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     val loginPreferences: LiveData<Pair<Boolean, Boolean>> =
         dataStoreRepository.loginPreferences.asLiveData()
+
     val dataPreferences: LiveData<Pair<String, String>> =
         dataStoreRepository.dataPreferences.asLiveData()
 
@@ -35,6 +36,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
                 _isLogged.value = true
 
+                // Salva o email caso o usuário queira se manter logado. Dessa forma, ele não será
+                // vazio na Initial Activity.
                 if (stayLogged) {
                     dataStoreRepository.saveEmailStayLogged(email)
                 } else {

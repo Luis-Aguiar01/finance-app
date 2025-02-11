@@ -1,5 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.data.entity.bill
 
+// Entidade que representa uma compra feita por um usuário.
+
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity

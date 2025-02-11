@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Finance Up</string>
+    <string name="welcome_message_home">Bienvenido \uD83D\uDC4B</string>
+    <string name="current_balance">$1,250.00</string>
+    <string name="buy_card_text">Agregar Compra</string>
+    <string name="check_expenses_card_title">Gráficos</string>
+    <string name="financial_goals_card_title">Metas</string>
+    <string name="fixed_bills_card_title">Cuentas</string>
+    <string name="title_home_navbar">Inicio</string>
+    <string name="title_profile_navbar">Perfil</string>
+    <string name="pefil_title_card">Perfil</string>
+    <string name="confing_card_title">Historial</string>
+    <string name="title_register_form">Registro</string>
+    <string name="hint_input_name">Ingrese su nombre</string>
+    <string name="hint_input_email">Ingrese su correo electrónico</string>
+    <string name="hint_input_password">Ingrese su contraseña</string>
+    <string name="text_button_register">Registrarse</string>
+    <string name="login_button_text">Iniciar Sesión</string>
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="add_purchase_title">Agregar Compra</string>
+    <string name="recent_purchases_subtitle">Compras Recientes</string>
+    <string name="pickup_date">Seleccionar Fecha</string>
+    <string name="title_chart_page">Gráfico de Gastos</string>
+    <string name="pickup_a_date_subtitle">Seleccione una fecha:</string>
+    <string name="bar_chart">Barras</string>
+    <string name="pie_chart">Torta</string>
+    <string name="line_chart">Línea</string>
+    <string name="goal_page_title">Metas</string>
+    <string name="profile_page_title">Información del Usuario</string>
+    <string name="profile_page_subtitle">Cambiar Datos</string>
+    <string name="input_name_placeholder">Ingrese su nombre</string>
+    <string name="nome">Nombre</string>
+    <string name="email_hint">Correo Electrónico</string>
+    <string name="email_placeholder">Ingrese el nuevo correo</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="password_placeholder">Ingrese la nueva contraseña</string>
+    <string name="salary_hint">Salario</string>
+    <string name="salary_placeholder">Ingrese el nuevo salario</string>
+    <string name="edit_button_text">Editar</string>
+    <string name="copyright_message">2025© Todos los derechos reservados</string>
+    <string name="register_button">Registrarse</string>
+    <string name="initial_page_title">Regístrese o inicie sesión</string>
+    <string name="historical_title">Historial</string>
+    <string name="historical_page_subtitle">Compras realizadas</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="name_input">Nombre</string>
+    <string name="salary_input_hint">Salario</string>
+    <string name="salary_input_placeholder">Ingrese su salario</string>
+    <string name="arrow_back_content_description">Flecha apuntando a la izquierda</string>
+    <string name="shopping_cart_content_description">Carrito de compras</string>
+    <string name="add_float_button_content_description">Icono de suma con un símbolo de más en el centro</string>
+    <string name="bar_chart_content_description">Gráfico de barras</string>
+    <string name="rocket_content_description">Cohete volando</string>
+    <string name="subtitle_goal_page">¡Revise su progreso!</string>
+    <string name="list_content_description">Lista de ítems</string>
+    <string name="pork_icon_content_description">Alcancía</string>
+    <string name="login_icon_content_description">Icono de inicio de sesión</string>
+    <string name="save_data_checkbox">Guardar datos</string>
+    <string name="stay_logged_checkbox">Mantenerse conectado</string>
+    <string name="credit_card_content_description">Tarjeta de crédito</string>
+    <string name="pie_chart_content_description">Gráfico de torta</string>
+    <string name="line_chart_content_description">Gráfico de líneas</string>
+    <string name="person_icon_content_description">Icono de una persona</string>
+    <string name="money_icon_content_description">Símbolo de dinero</string>
+    <string name="logout_icon_content_description">Icono de cierre de sesión</string>
+    <string name="register_icon_content_description">Lápiz y cuadrados formando un triángulo</string>
+    <string name="trash_remove_content_description">Icono de basura para eliminar ítem de la lista</string>
+    <string name="icon_pen_content_description">Lápiz para editar ítem de la lista</string>
+    <string name="add_button_list_content_description">Símbolo de suma para agregar un nuevo ítem a la lista.</string>
+    <string name="add_new_purchase">Agregar nueva compra</string>
+    <string name="product_form_hint">Producto</string>
+    <string name="form_add_product_placeholder">Ingrese el producto comprado</string>
+    <string name="price_hint_input">Precio</string>
+    <string name="price_form_placeholder">Ingrese el precio del producto</string>
+    <string name="category_form_hint">Categoría</string>
+    <string name="add_button_dialog">Agregar</string>
+    <string name="cancel_button_dialog">Cancelar</string>
+    <string name="add_new_goal_title_dialog">Agregar nueva meta</string>
+    <string name="product_description_placeholder_goal_dialog">Ingrese el nombre del producto</string>
+    <string name="initial_quantity_dialog_goal">Cantidad inicial</string>
+    <string name="initial_quantity_placeholder_goal_dialog">Ingrese el monto actual</string>
+    <string name="final_quantity_goal_dialog">Cantidad final</string>
+    <string name="final_quantity_placeholder_goal_dialog">Ingrese el valor final</string>
+    <string name="add_quantity_dialog_goal_title">Agregar cantidad</string>
+    <string name="quantity_hint">Cantidad</string>
+    <string name="quantity_placeholder">Ingrese la cantidad</string>
+    <string name="select_range_date">Seleccione un rango de fechas</string>
+    <string name="date_pattern">dd/MM/yyyy</string>
+    <string name="buys_by_category">Gastos por categoría</string>
+    <string name="goal_added_successfuly">Meta agregada con éxito.</string>
+    <string name="goal_deleted_successfuly">Meta eliminada con éxito.</string>
+    <string name="goal_updated_successfuly">Meta actualizada con éxito.</string>
+    <string name="goal_error_values">La meta final no puede ser menor que la cantidad inicial.</string>
+    <string name="goal_error_empty_informations">Agregue toda la información de la meta.</string>
+    <string name="empty_quantity_error">Ingrese la cantidad.</string>
+    <string name="user_registered_successfuly">Usuario registrado con éxito</string>
+    <string name="login_failed">¡Error al iniciar sesión!</string>
+    <string name="error_empty_values">Por favor, ingrese todos los valores.</string>
+    <string name="welcome_message">Bienvenido,\n%1$s 👋</string>
+    <string name="profile_updated_successfully">¡Perfil actualizado con éxito!</string>
+    <string name="email_already_registered_error">Este correo ya está en uso.</string>
+    <string name="add_all_product_informations_error">Agregue toda la información del producto.</string>
+    <string name="bill_added_successfully">Gasto agregado con éxito.</string>
+    <string name="bill_deleted_successfuly">Gasto eliminado con éxito.</string>
+    <string name="bill_updated_successfully">Gasto actualizado con éxito.</string>
+    <string name="fil_out_all_fields_error">Complete todos los campos.</string>
+    <string name="register_error">No se pudo completar el registro...</string>
+    <string name="fill_out_all_fields_error">Complete todos los campos...</string>
+    <string name="edit_purchase">Editar compra</string>
+
+    <string-array name="categories">
+        <item>Electrónicos</item>
+        <item>Hogar y Jardín</item>
+        <item>Belleza y Cuidado Personal</item>
+        <item>Moda y Accesorios</item>
+        <item>Salud y Bienestar</item>
+        <item>Alimentos y Bebidas</item>
+        <item>Automóviles y Piezas</item>
+        <item>Deportes y Ocio</item>
+        <item>Libros y Medios</item>
+        <item>Juguetes y Juegos</item>
+        <item>Oficina y Papelería</item>
+        <item>Tienda de Mascotas</item>
+        <item>Viajes y Turismo</item>
+        <item>Servicios</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Fija</item>
+        <item>Variable</item>
+    </string-array>
+</resources>

@@ -22,6 +22,9 @@ class DataStoreRepository(context: Context) {
         val STAY_LOGGED_IN = booleanPreferencesKey("stay_logged")
         val EMAIL = stringPreferencesKey("email")
         val PASSWORD = stringPreferencesKey("password")
+
+        // Precisamos salvar o email do usuário, para o caso de ele se manter logado no sistema.
+        // Precisamos do email para poder identificar o usuário.
         val STAY_LOGGED_EMAIL = stringPreferencesKey("stay_logged_email")
     }
 
@@ -45,6 +48,7 @@ class DataStoreRepository(context: Context) {
         }
     }
 
+    // Atualiza o valor do email do usuário logado.
     suspend fun saveEmailStayLogged(email: String) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.STAY_LOGGED_EMAIL] = email
@@ -63,6 +67,7 @@ class DataStoreRepository(context: Context) {
         Pair(email, password)
     }
 
+    // Recebe o valor do email do usuário logado.
     val emailStayLogged: Flow<String> = dataStore.data.map { preferences ->
         val email = preferences[PreferencesKeys.STAY_LOGGED_EMAIL] ?: ""
         email

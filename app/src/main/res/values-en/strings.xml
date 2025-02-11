@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Finance Up</string>
+    <string name="welcome_message_home">Welcome \uD83D\uDC4B</string>
+    <string name="current_balance">$1,250.00</string>
+    <string name="buy_card_text">Add Purchase</string>
+    <string name="check_expenses_card_title">Charts</string>
+    <string name="financial_goals_card_title">Goals</string>
+    <string name="fixed_bills_card_title">Bills</string>
+    <string name="title_home_navbar">Home</string>
+    <string name="title_profile_navbar">Profile</string>
+    <string name="pefil_title_card">Profile</string>
+    <string name="confing_card_title">History</string>
+    <string name="title_register_form">Register</string>
+    <string name="hint_input_name">Enter your name</string>
+    <string name="hint_input_email">Enter your email</string>
+    <string name="hint_input_password">Enter your password</string>
+    <string name="text_button_register">Register</string>
+    <string name="login_button_text">Login</string>
+    <string name="login_title">Login</string>
+    <string name="add_purchase_title">Add Purchase</string>
+    <string name="recent_purchases_subtitle">Recent Purchases</string>
+    <string name="pickup_date">Pick Date</string>
+    <string name="title_chart_page">Expense Chart</string>
+    <string name="pickup_a_date_subtitle">Select a date:</string>
+    <string name="bar_chart">Bar</string>
+    <string name="pie_chart">Pie</string>
+    <string name="line_chart">Line</string>
+    <string name="goal_page_title">Goals</string>
+    <string name="profile_page_title">User Information</string>
+    <string name="profile_page_subtitle">Change Data</string>
+    <string name="input_name_placeholder">Enter your name</string>
+    <string name="nome">Name</string>
+    <string name="email_hint">Email</string>
+    <string name="email_placeholder">Enter new email</string>
+    <string name="password_hint">Password</string>
+    <string name="password_placeholder">Enter new password</string>
+    <string name="salary_hint">Salary</string>
+    <string name="salary_placeholder">Enter new salary</string>
+    <string name="edit_button_text">Edit</string>
+    <string name="copyright_message">2025© All rights reserved</string>
+    <string name="register_button">Sign Up</string>
+    <string name="initial_page_title">Sign up or log in</string>
+    <string name="historical_title">History</string>
+    <string name="historical_page_subtitle">Completed purchases</string>
+    <string name="logout">Logout</string>
+    <string name="name_input">Name</string>
+    <string name="salary_input_hint">Salary</string>
+    <string name="salary_input_placeholder">Enter your salary</string>
+    <string name="arrow_back_content_description">Arrow pointing left</string>
+    <string name="shopping_cart_content_description">Shopping cart</string>
+    <string name="add_float_button_content_description">Plus icon with a plus symbol in the center</string>
+    <string name="bar_chart_content_description">Bar chart</string>
+    <string name="rocket_content_description">Rocket flying</string>
+    <string name="subtitle_goal_page">Check your progress!</string>
+    <string name="list_content_description">Item list</string>
+    <string name="pork_icon_content_description">Piggy bank</string>
+    <string name="login_icon_content_description">Login icon</string>
+    <string name="save_data_checkbox">Save data</string>
+    <string name="stay_logged_checkbox">Stay logged in</string>
+    <string name="credit_card_content_description">Credit card</string>
+    <string name="pie_chart_content_description">Pie chart</string>
+    <string name="line_chart_content_description">Line chart</string>
+    <string name="person_icon_content_description">Person icon</string>
+    <string name="money_icon_content_description">Money symbol</string>
+    <string name="logout_icon_content_description">Logout icon</string>
+    <string name="register_icon_content_description">Pencil and squares forming a triangle</string>
+    <string name="trash_remove_content_description">Trash icon to remove item from list</string>
+    <string name="icon_pen_content_description">Pencil to edit item in list</string>
+    <string name="add_button_list_content_description">Plus symbol to add a new item to the list.</string>
+    <string name="add_new_purchase">Add new purchase</string>
+    <string name="product_form_hint">Product</string>
+    <string name="form_add_product_placeholder">Enter the product purchased</string>
+    <string name="price_hint_input">Price</string>
+    <string name="price_form_placeholder">Enter the product price</string>
+    <string name="category_form_hint">Category</string>
+    <string name="add_button_dialog">Add</string>
+    <string name="cancel_button_dialog">Cancel</string>
+    <string name="add_new_goal_title_dialog">Add new goal</string>
+    <string name="product_description_placeholder_goal_dialog">Enter the product name</string>
+    <string name="initial_quantity_dialog_goal">Initial quantity</string>
+    <string name="initial_quantity_placeholder_goal_dialog">Enter the current amount</string>
+    <string name="final_quantity_goal_dialog">Final quantity</string>
+    <string name="final_quantity_placeholder_goal_dialog">Enter the final amount</string>
+    <string name="add_quantity_dialog_goal_title">Add amount</string>
+    <string name="quantity_hint">Amount</string>
+    <string name="quantity_placeholder">Enter the amount</string>
+    <string name="select_range_date">Select a date range</string>
+    <string name="date_pattern">MM/dd/yyyy</string>
+    <string name="buys_by_category">Expenses by category</string>
+    <string name="goal_added_successfuly">Goal added successfully.</string>
+    <string name="goal_deleted_successfuly">Goal deleted successfully.</string>
+    <string name="goal_updated_successfuly">Goal updated successfully.</string>
+    <string name="goal_error_values">The final goal cannot be less than the initial amount.</string>
+    <string name="goal_error_empty_informations">Add all goal information.</string>
+    <string name="empty_quantity_error">Enter the quantity.</string>
+    <string name="user_registered_successfuly">User registered successfully</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="error_empty_values">Please enter all values.</string>
+    <string name="welcome_message">Welcome,\n%1$s 👋</string>
+    <string name="profile_updated_successfully">Profile updated successfully!</string>
+    <string name="email_already_registered_error">This email is already in use.</string>
+    <string name="add_all_product_informations_error">Add all product information.</string>
+    <string name="bill_added_successfully">Expense added successfully.</string>
+    <string name="bill_deleted_successfuly">Expense deleted successfully.</string>
+    <string name="bill_updated_successfully">Expense updated successfully.</string>
+    <string name="fil_out_all_fields_error">Fill out all fields.</string>
+    <string name="register_error">Unable to complete registration...</string>
+    <string name="fill_out_all_fields_error">Fill out all fields...</string>
+    <string name="edit_purchase">Edit purchase</string>
+
+    <string-array name="categories">
+        <item>Electronics</item>
+        <item>Home and Garden</item>
+        <item>Beauty and Personal Care</item>
+        <item>Fashion and Accessories</item>
+        <item>Health and Wellness</item>
+        <item>Food and Beverages</item>
+        <item>Automotive and Parts</item>
+        <item>Sports and Leisure</item>
+        <item>Books and Media</item>
+        <item>Toys and Games</item>
+        <item>Office and Stationery</item>
+        <item>Pet Shop</item>
+        <item>Travel and Tourism</item>
+        <item>Services</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Fixed</item>
+        <item>Variable</item>
+    </string-array>
+</resources>

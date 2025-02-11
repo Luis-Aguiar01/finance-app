@@ -108,7 +108,6 @@
     <string name="fill_out_all_fields_error">Preencha todos os campos...</string>
     <string name="edit_purchase">Editar compra</string>
 
-
     <string-array name="categories">
         <item>Eletrônicos</item>
         <item>Casa e Jardim</item>

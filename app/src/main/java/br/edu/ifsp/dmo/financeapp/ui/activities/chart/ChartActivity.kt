@@ -50,6 +50,7 @@ class ChartActivity : AppCompatActivity() {
         configListeners()
     }
 
+    // Quando a base de dados muda, os gráficos atualizam com os novos dados
     private fun configObservers() {
         viewModel.totalByCategory.observe(this, Observer {
             setPieChart(it)
@@ -62,11 +63,14 @@ class ChartActivity : AppCompatActivity() {
             finish()
         }
 
+        // Configura um botão que abre um calendário
         binding.pickupDateButton.setOnClickListener {
             val constraintDate = CalendarConstraints.Builder()
                 .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
                 .build()
 
+            // Cria um calendário do tipo range picker para o usuário escolher
+            // um range de datas.
             val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTitleText(getString(R.string.select_range_date))
                 .setSelection(
@@ -86,6 +90,9 @@ class ChartActivity : AppCompatActivity() {
 
                 val localCalendar = Calendar.getInstance(timeZone)
 
+                // Inicializa o  primeiro dia em 00:00 para pegar o dia inteiro desde o começo
+                // Foi preciso somar um dia, pois estava com um dia de atraso, em relação ao
+                // escolhido no calendário
                 localCalendar.timeInMillis = selection.first + oneDayMillis
                 localCalendar.set(Calendar.HOUR_OF_DAY, 0)
                 localCalendar.set(Calendar.MINUTE, 0)
@@ -93,6 +100,7 @@ class ChartActivity : AppCompatActivity() {
                 localCalendar.set(Calendar.MILLISECOND, 0)
                 val startDateMillis = localCalendar.timeInMillis
 
+                // Inicializa a segunda data em 23:59:99 para pegar o range completo dos dias.
                 localCalendar.timeInMillis = selection.second + oneDayMillis
                 localCalendar.set(Calendar.HOUR_OF_DAY, 23)
                 localCalendar.set(Calendar.MINUTE, 59)
@@ -100,6 +108,7 @@ class ChartActivity : AppCompatActivity() {
                 localCalendar.set(Calendar.MILLISECOND, 999)
                 val endDateMillis = localCalendar.timeInMillis
 
+                // Formata as datas no padrão brasileiro
                 val simpleDateFormat =
                     SimpleDateFormat(getString(R.string.date_pattern), Locale.getDefault())
                 val formattedStartDate = simpleDateFormat.format(Date(startDateMillis))
@@ -118,6 +127,7 @@ class ChartActivity : AppCompatActivity() {
             dateRangePicker.show(supportFragmentManager, "MATERIAL_DATE_PICKER")
         }
 
+        // Muda as visibilidades dos gráficos com base no clique dos botões
         binding.toggleButton.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 when (checkedId) {
@@ -135,6 +145,7 @@ class ChartActivity : AppCompatActivity() {
         }
     }
 
+    // Cria e exibe um gráfico de barras, com um conjuto "categoria - soma(valor)"
     private fun setBarChart(map: Map<String, Double>) {
         val barChart = binding.barChart
 
@@ -185,6 +196,7 @@ class ChartActivity : AppCompatActivity() {
         barChart.invalidate()
     }
 
+    // Cria e exibe um gráfico de pizza, com um conjuto "categoria - soma(valor)"
     private fun setPieChart(map: Map<String, Double>) {
         val pieChart = binding.pieChart
 

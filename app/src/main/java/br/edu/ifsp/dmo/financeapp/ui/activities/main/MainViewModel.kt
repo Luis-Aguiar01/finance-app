@@ -26,6 +26,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun logout() {
         viewModelScope.launch {
             dataStoreRepository.savePreferencesLogout()
+            // Coloca o email como vazio, para que o usuário não se mantenha logado.
             dataStoreRepository.saveEmailStayLogged("")
             _isDisconnected.value = true
         }

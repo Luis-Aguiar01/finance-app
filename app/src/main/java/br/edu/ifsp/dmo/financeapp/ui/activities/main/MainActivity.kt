@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Salve o email na view model, para que ele possa ser passado para as demais activities
     private fun openBundle() {
         val extras = intent.extras
         if (extras != null) {
@@ -101,6 +102,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    // Caso o perfil do usuário tenha sido atualizado com sucesso, uma resposta é enviada para
+    // a main activity, que faz o tratamento dos novos dados, dependendo de como eles estão
+    // salvos no dataStore, em relação as preferencias do usuário.
     private fun configProfileResultLauncher(): ActivityResultLauncher<Intent> {
         return registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {

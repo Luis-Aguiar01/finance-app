@@ -1,5 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.data.entity.user
 
+// Entidade que representa um usuário no nosso sistema.
+
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity

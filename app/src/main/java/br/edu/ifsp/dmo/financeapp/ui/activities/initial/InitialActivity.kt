@@ -53,6 +53,10 @@ class InitialActivity : AppCompatActivity() {
             )
         }
 
+        // Caso o email salvo no dataStore não seja vazio, significa que o usuário selecionou
+        // a opção de se manter logado, então o email é armazenado na view model e passado para
+        // a main activity, que tem as demais funcionalidades do sistema, as quais o email do usuário
+        // é necessário.
         viewModel.savedEmail.observe(this, Observer {
             if (it.isNotBlank()) {
                 val resultIntent = Intent(this, MainActivity::class.java)

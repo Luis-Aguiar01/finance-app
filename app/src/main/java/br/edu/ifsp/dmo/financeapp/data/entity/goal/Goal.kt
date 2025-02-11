@@ -1,5 +1,7 @@
 package br.edu.ifsp.dmo.financeapp.data.entity.goal
 
+// Representa uma meta de compra definida por um usuário.
+
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
