@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import br.edu.ifsp.dmo.financeapp.data.datastore.DataStoreRepository
 import br.edu.ifsp.dmo.financeapp.data.entity.user.User
 import br.edu.ifsp.dmo.financeapp.data.repository.user.UserRepository
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -27,6 +28,25 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             dataStoreRepository.savePreferencesLogout()
             dataStoreRepository.saveEmailStayLogged("")
             _isDisconnected.value = true
+        }
+    }
+
+    fun saveEmailStayLogged(email: String) {
+        viewModelScope.launch {
+            val (saveLogin, stayLoggedIn) = dataStoreRepository.loginPreferences.first()
+
+            if (stayLoggedIn) dataStoreRepository.saveEmailStayLogged(email)
+
+            val user = userRepository.findByEmail(emailUser)
+
+            if (saveLogin && user != null) {
+                dataStoreRepository.savePreferences(
+                    email = user.email,
+                    password = user.password,
+                    saveLogin = saveLogin,
+                    stayLoggedIn = stayLoggedIn
+                )
+            }
         }
     }
 

@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                     val email = extras?.getString(Constants.USER_EMAIL)
                     if (email != null) {
                         viewModel.setEmail(email)
+                        viewModel.saveEmailStayLogged(email)
                         Toast.makeText(
                             this,
                             getString(R.string.profile_updated_successfully),
