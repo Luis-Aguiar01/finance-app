@@ -59,7 +59,7 @@ Para utilizar o **Finance Up**, siga os passos abaixo:
 ## 1️⃣ Download do APK  
 Baixe o APK diretamente no link abaixo:
 
-🔗 **[Download do APK](https://github.com/Luis-Aguiar01/finance-app/blob/main/README.md)** *(Substituir pelo link real)*
+🔗 **[Download do APK](https://drive.google.com/file/d/1xdbKkavL9T0k8ho3PvVUQbV8zcwDtrS5/view?usp=sharing)**
 
 ## 2️⃣ Instalação no Android  
 1. No seu dispositivo, abra **Configurações > Segurança** e ative a opção **Fontes desconhecidas** (caso o Android solicite permissão para instalar aplicativos externos).
